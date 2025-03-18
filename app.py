@@ -1,123 +1,166 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
-import folium
 from datetime import datetime
-from geopy.distance import distance
-
 
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
 
-# Text input and button
+# Load data
+df_fields = pd.read_csv("./new_cleaned_fields_data.csv")
+df_travel = pd.read_csv("./new_cleaned_travel_data_base.csv")
+df_pta_fall = pd.read_csv("./new_cleaned_PTA_fall.csv")
+df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
+df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
+df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
 
-import pandas as pd
-import numpy as np
-
-
-
-#HEAT MAPPING
-travel_df = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_travel_data_base.csv")#  next 5 lines need to be edited based on local computer
-players_2017_df = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_2017_Players_Data.csv")
-rec_fall_24_df = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_rec_fall24.csv")
-fields_df = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_2017_Players_Data.csv")
-pta_df = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_PTA_fall.csv")
-adp_df = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/cleaned_ADPFallData.csv")
-
-datasets = [travel_df, players_2017_df, rec_fall_24_df, fields_df, pta_df, adp_df]
-for df in datasets:
-    df.dropna(subset=['latitude', 'longitude'], inplace=True)
-
-# Combine all datasets into one
-combined_df = pd.concat(datasets)
-
-# Convert latitude and longitude columns to float
-combined_df['latitude'] = combined_df['latitude'].astype(float)
-combined_df['longitude'] = combined_df['longitude'].astype(float)
-data = combined_df.copy()
-
-map = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
-
-# Generate heatmap data from filtered dataset
-heatmap_data = [[row['latitude'], row['longitude']] for index, row in data.iterrows()]
-HeatMap(heatmap_data).add_to(map)
-
-# Render the map in Streamlit
-st.header("Heat Map in Streamlit")
-st_folium(map,width=700,height=500)
-
-#FILTERING FOR HEAT MAP
-
-#pinpoint mapping
-df1 = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_fields_data.csv")
-df2 = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_travel_data_base.csv")
-df3 = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_PTA_fall.csv")
-df4 = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_2017_Players_Data.csv")
-df5 = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/new_cleaned_rec_fall24.csv")
-df6 = pd.read_csv("/Users/jadenbobb/Desktop/DCSoccerClubNew/cleaned_ADPFallData.csv")
-
-for df in [df1, df2, df3, df4, df5, df6]:
-    df.rename(columns={"latitude": "Latitude", "longitude": "Longitude","zip": "Zip Code"}, inplace=True)
+# Standardize column names
+for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
+    df.rename(columns={"latitude": "Latitude", "longitude": "Longitude", "zip": "Zip Code"}, inplace=True)
 
 program_names = ["None", "Travel", "Pre-Travel Academy Fall", "2017 Players", "Rec Fall 2024", "Accelerated Development Program Fall"]
-dfs = [df1, df2, df3, df4, df5, df6]
+dfs = [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]
 
 for df, program_name in zip(dfs, program_names):
     df["Program"] = program_name
 
+# Calculate age
 today = datetime.today()
 def calculate_age(birth_date):
     if pd.notnull(birth_date):
         return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
     return None
 
-for df in [df2, df5, df6]:
-  df["birth_date"] = pd.to_datetime(df["birth_date"], errors="coerce")
-  df["Age"] = df["birth_date"].apply(calculate_age)
+for df in [df_travel, df_rec_fall_24, df_adp_fall]:
+    df["birth_date"] = pd.to_datetime(df["birth_date"], errors="coerce")
+    df["Age"] = df["birth_date"].apply(calculate_age)
 
-df5.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
-df6.rename(columns={"grade": "Grade"}, inplace=True)
+df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
+df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
 
-program_colors = {
-    "None": "cadetblue",
-    "Travel": "red",
-    "Pre-Travel Academy Fall": "red",
-    "2017 Players": "red",
-    "Rec Fall 2024": "red",
-    "Accelerated Development Program Fall": "red"
-}
+# Merge player datasets
+df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
 
-df_all = pd.concat([df1, df2, df3, df4, df5, df6], ignore_index=True)
+def create_heatmap(df):
+    map_obj = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
+    heatmap_data = df[["Latitude", "Longitude"]].dropna().values.tolist()
+    if heatmap_data:
+        HeatMap(heatmap_data).add_to(map_obj)
+    return map_obj
 
+def create_pin_map(player_df, field_df):
+    map_obj = folium.Map(location=[38.95, -77.0369], zoom_start=12)
+    
+    # Limit player markers to 500
+    for _, row in player_df.head(500).iterrows():
+        folium.Marker(
+            location=[row["Latitude"], row["Longitude"]],
+            popup=f"{row.get('Program', 'N/A')} - {row.get('School', 'N/A')}, Zip: {row.get('Zip Code', 'N/A')}",
+            icon=folium.Icon(color="red")
+        ).add_to(map_obj)
+    
+    for _, row in field_df.iterrows():
+        folium.Marker(
+            location=[row["Latitude"], row["Longitude"]],
+            popup=f"{row.get('Name', 'N/A')}, {row.get('Capacity', 'N/A')}, {row.get('Surface', 'N/A')}",
+            icon=folium.Icon(color="blue")
+        ).add_to(map_obj)
+    
+    return map_obj
 
-map_pin = folium.Map(location=[38.95, -77.0369], zoom_start=12)
+# Sidebar filters
+st.sidebar.header("Player Filters")
 
-counter=0
-for index, row in df_all.iterrows():
-    if counter<500:
-        program_name = row.get("Program", "Unknown")
-        marker_color = program_colors.get(program_name, "cadetblue")
-        folium.Marker(location=[row["Latitude"], row["Longitude"]],
-                        popup=f"{row.get('Program', 'N/A')} - {row.get('School', 'N/A')}, Zip: {row.get('Zip Code', 'N/A')}",
-                        icon=folium.Icon(color=marker_color)).add_to(map_pin)
-        counter=counter+1
+def get_lowercase_unique_options(column):
+    """ Get sorted unique lowercase options """
+    return sorted(df_players[column].dropna().astype(str).str.lower().unique())
 
+def get_numeric_sorted_options(column):
+    """ Get sorted unique numeric options """
+    return sorted(df_players[column].dropna().astype(int).unique())
 
+selected_programs = st.sidebar.multiselect("Select Program", get_lowercase_unique_options("Program"))
+selected_ages = st.sidebar.multiselect("Select Age", get_numeric_sorted_options("Age"))
+selected_gender = st.sidebar.selectbox("Select Gender", [""] + get_lowercase_unique_options("Gender"))
+selected_grade = st.sidebar.multiselect("Select Grade", get_lowercase_unique_options("Grade"))
+selected_race = st.sidebar.multiselect("Select Race", get_lowercase_unique_options("Race"))
+selected_school = st.sidebar.multiselect("Select School", get_lowercase_unique_options("School"))
 
-st.header("Pin Map in Streamlit")
-st_folium(map_pin,width=700,height=500)
-program=st.sidebar.multiselect("Select Program", df_all["Program"].unique())
-age=st.sidebar.multiselect("Select Age(s)",df_all["Age"].unique())
-gender=st.sidebar.selectbox("Select Gender",df_all["Gender"].unique())
+# Field Filters
+st.sidebar.header("Field Filters")
+
+def get_field_lowercase_options(column):
+    """ Get sorted unique lowercase options for fields """
+    return sorted(df_fields[column].dropna().astype(str).str.lower().unique())
+
+def get_field_numeric_options(column):
+    """ Get sorted unique numeric options for fields """
+    return sorted(df_fields[column].dropna().astype(int).unique())
+
+selected_capacity = st.sidebar.multiselect("Select Capacity", get_field_numeric_options("Capacity"))
+selected_surface = st.sidebar.multiselect("Select Surface", get_field_lowercase_options("Surface"))
+selected_size = st.sidebar.multiselect("Select Size", get_field_lowercase_options("Size"))
+selected_game_size = st.sidebar.multiselect("Select Game Size", get_field_lowercase_options("Game Size"))
+selected_lights = st.sidebar.selectbox("Select Lights", [""] + get_field_lowercase_options("Lights"))
+selected_permanent_lines = st.sidebar.multiselect("Select Permanent Lines", get_field_lowercase_options("Permanent Lines"))
+selected_goals = st.sidebar.selectbox("Select Goals", [""] + get_field_lowercase_options("Goals"))
+
+# Apply Player Filters
+filtered_players = df_players.copy()
+
+if any([selected_programs, selected_ages, selected_gender, selected_grade, selected_race, selected_school]):
+    if selected_programs:
+        filtered_players = filtered_players[filtered_players["Program"].str.lower().isin(selected_programs)]
+    if selected_ages:
+        filtered_players = filtered_players[filtered_players["Age"].isin(selected_ages)]
+    if selected_gender:
+        filtered_players = filtered_players[filtered_players["Gender"].str.lower() == selected_gender]
+    if selected_grade:
+        filtered_players = filtered_players[filtered_players["Grade"].isin(selected_grade)]
+    if selected_race:
+        filtered_players = filtered_players[filtered_players["Race"].str.lower().isin(selected_race)]
+    if selected_school:
+        filtered_players = filtered_players[filtered_players["School"].str.lower().isin(selected_school)]
+else:
+    filtered_players = pd.DataFrame(columns=df_players.columns)
+
+# Apply Field Filters
+filtered_fields = df_fields.copy()
+
+if any([selected_capacity, selected_surface, selected_size, selected_game_size, selected_lights, selected_permanent_lines, selected_goals]):
+    if selected_capacity:
+        filtered_fields = filtered_fields[filtered_fields["Capacity"].isin(selected_capacity)]
+    if selected_surface:
+        filtered_fields = filtered_fields[filtered_fields["Surface"].str.lower().isin(selected_surface)]
+    if selected_size:
+        filtered_fields = filtered_fields[filtered_fields["Size"].str.lower().isin(selected_size)]
+    if selected_game_size:
+        filtered_fields = filtered_fields[filtered_fields["Game Size"].str.lower().isin(selected_game_size)]
+    if selected_lights:
+        filtered_fields = filtered_fields[filtered_fields["Lights"].str.lower() == selected_lights]
+    if selected_permanent_lines:
+        filtered_fields = filtered_fields[filtered_fields["Permanent Lines"].str.lower().isin(selected_permanent_lines)]
+    if selected_goals:
+        filtered_fields = filtered_fields[filtered_fields["Goals"].str.lower() == selected_goals]
+else:
+    filtered_fields = pd.DataFrame(columns=df_fields.columns)
+
+# Display updated maps
+st.header("Heat Map")
+st_folium(create_heatmap(filtered_players), width=700, height=500)
+
+st.header("Pin Map")
+st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
+
 
 #DISTANCING
 st.header("Optimal Distance in Streamlit")
-selected_option = st.selectbox("Choose a Program",df_all["Program"].unique())
+selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
 if st.button("Submit"):
     st.write(f"You submitted: {selected_option}")
-    st.write(f"The optimal field is: {answer}")
+    #st.write(f"The optimal field is: {answer}")
 else:
     st.write("Please select an option and click Submit.")
 
