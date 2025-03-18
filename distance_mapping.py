@@ -63,6 +63,7 @@ def group_and_print_optimal_fields(players_df, fields_df, group_col, label_prefi
         print(f"{label} optimal field is {best_field} "
               f"with avg distance of {avg_distances[best_field]:.2f}")
 
+
 #
 # NEW FUNCTION: easily called from your Streamlit front end to get the best field
 #
@@ -132,3 +133,4 @@ if __name__ == "__main__":
     # GROUP_BY = "birth_year"
     # group_and_print_optimal_fields(players_df, fields_df, group_col=GROUP_BY, label_prefix='birth year')
 '''
+
