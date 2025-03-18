@@ -1,0 +1,414 @@
+program,player_first_name,player_last_name,gender,birth_date,address,city,state,zip,Unnamed: 9,Unnamed: 10,full_address,latitude,longitude
+Rec U8,Maya,Cakmak,F,1/1/2017,Washington,Washington,DC,20007,,,"Washington, Washington, DC 20007",38.9100625,-77.1188273
+Rec U8,Everett,Weiskotten,M,1/2/2017,1360 RITTENHOUSE ST NW,WASHINGTON,DC,20011,,,"1360 RITTENHOUSE ST NW, WASHINGTON, DC 20011",38.9652336,-77.0345881
+Rec U8,Vera,Grinberg Dellasoppa,F,1/2/2017,4123 Military Rd NW,Washington,DC,20015,,,"4123 Military Rd NW, Washington, DC 20015",38.9613374,-77.0840727
+Rec U8,Leonie,Arbuckle,F,1/2/2017,4448 Q St NW,Washington ,DC,20007,,,"4448 Q St NW, Washington , DC 20007",38.9103438,-77.085665
+Rec U8,Evan,Grinberg,M,1/5/2017,3901 Livingston Street NW,Washington,DC,20015,,,"3901 Livingston Street NW, Washington, DC 20015",38.9633172,-77.0800409
+Rec U8,Eliza,Moritz,F,1/5/2017,2833 29th Pl NW,Washington,DC,20008,,,"2833 29th Pl NW, Washington, DC 20008",38.9252482,-77.060621
+Rec U8,Elsie,Gage,F,1/5/2017,3519 Albemarle Street NW,Washington ,DC,20008,,,"3519 Albemarle Street NW, Washington , DC 20008",38.9481915,-77.0708612
+Rec U8,Rhys,Cherry-Levine,M,1/6/2017,3406 LOWELL ST NW,Washington,DC,20016,,,"3406 LOWELL ST NW, Washington, DC 20016",38.9323458,-77.0697024
+Rec U8,Caroline,Glenn,F,1/6/2017,3427 Quebec St NW,Washington,DC,20016,,,"3427 Quebec St NW, Washington, DC 20016",38.938389,-77.0705674
+Rec U8,Charlotte,Yanik,F,1/6/2017,3037 chancellor’s Way NE,Washington,DC,20017,,,"3037 chancellor’s Way NE, Washington, DC 20017",38.9281733,-77.0000653
+Rec U8,Ruby,Foss,F,1/7/2017,1877 Ingleside Ter NW,washington,DC,20010,,,"1877 Ingleside Ter NW, washington, DC 20010",38.9349725,-77.0466554
+Rec U8,Isabel,Jung,F,1/8/2017,2418 39th Pl NW,Washington,DC,20007,,,"2418 39th Pl NW, Washington, DC 20007",38.9212542,-77.0807077
+Rec U8,Olivia,Rosenthal,F,1/9/2017,5136 Palisade Lane NW,Washington ,DC,20016,,,"5136 Palisade Lane NW, Washington , DC 20016",38.9329886,-77.1093971
+Rec U8,Nils,Beridon,M,1/10/2017,1753 Verbena St NW ,Washington,DC,20012,,,"1753 Verbena St NW , Washington, DC 20012",38.9936965,-77.0413195
+Rec U8,Elliott,Janssen,M,1/10/2017,1018 Kearny St NE,Washington,DC,20017,,,"1018 Kearny St NE, Washington, DC 20017",38.9307087,-76.9943479
+Rec U8,Ettie,Wallach,F,1/11/2017,5232 Baltimore Avenue,Bethesda,MD,20816,,,"5232 Baltimore Avenue, Bethesda, MD 20816",38.9592837,-77.1000636
+Rec U8,Lucy,Simon,F,1/11/2017,2750 Brandywine St NW,Washington,DC,20008,,,"2750 Brandywine St NW, Washington, DC 20008",38.9497856,-77.0573236
+Rec U8,Gabriel,Williams,M,1/12/2017,"4908 7th St., NE",Washington,DC,20017,,,"4908 7th St., NE, Washington, DC 20017",38.9485293,-76.9998111
+Rec U8,Quincy,Slezak,M,1/13/2017,3102 Rodman St NW ,Washington ,DC,20008,,,"3102 Rodman St NW , Washington , DC 20008",38.9384793,-77.06564
+Rec U8,Michael,Whipple,M,1/13/2017,6323 7th Street NW ,Washington,DC,20011,,,"6323 7th Street NW , Washington, DC 20011",38.9671474,-77.024803
+Rec U8,Hope,Larson,F,1/13/2017,709 Varnum St NW,Washington,DC,20011,,,"709 Varnum St NW, Washington, DC 20011",38.9432537,-77.0248434
+Rec U8,Caleb,Boyd,M,1/14/2017,1413 floral st nw,Washington ,DC,20012,,,"1413 floral st nw, Washington , DC 20012",38.9788852,-77.036723
+Rec U8,Goeller,DeWerd,M,1/15/2017,1811 4th ST NW,Washington ,DC,20001,,,"1811 4th ST NW, Washington , DC 20001",38.9147348,-77.0195886
+Rec U8,Adela,Vázquez-Cohen,F,1/15/2017,"2100 11th Street, NW Apt 206",Washington,DC,20001,,,"2100 11th Street, NW Apt 206, Washington, DC 20001",38.918461,-77.0299839
+Rec U8,Sasha,Blackburn,F,1/15/2017,5223 Chevy Chase Pkwy NW,Washington,DC,20015,,,"5223 Chevy Chase Pkwy NW, Washington, DC 20015",38.9579535,-77.0727053
+Rec U8,Grace,Castro,F,1/16/2017,5129 12th Street NE,Washington,DC,20011,,,"5129 12th Street NE, Washington, DC 20011",38.9544759,-76.9921641
+Rec U8,Madeline,Cain,F,1/17/2017,312 Aspen Street Nw,Washington,DC,20012,,,"312 Aspen Street Nw, Washington, DC 20012",38.9720738,-77.0195035
+Rec U8,Liana,Fox,F,1/21/2017,1534 6th st nw,Washington,DC,20001,,,"1534 6th st nw, Washington, DC 20001",38.9107925,-77.0227217
+Rec U8,Jasper,Jabbal,M,1/22/2017,4927 12th Street NE,Washington,DC,20017,,,"4927 12th Street NE, Washington, DC 20017",38.9490133,-76.9928496
+Rec U8,Gus,Singleton,M,1/23/2017,3428 Oliver Street,Washington,DC,20015,,,"3428 Oliver Street, Washington, DC 20015",38.9665119,-77.0728726
+Rec U8,Harrison,OConnell,M,1/24/2017,1212 QUINCY ST NW,WASHINGTON,DC,20011,,,"1212 QUINCY ST NW, WASHINGTON, DC 20011",38.9374364,-77.0304113
+Rec U8,Norah,Brodey,F,1/24/2017,1717 Kilbourne Place NW,Washington,DC,20010,,,"1717 Kilbourne Place NW, Washington, DC 20010",38.930771,-77.0422113
+Rec U8,Zayden,Greenfield,M,1/27/2017,"1824 19th Street, NW Apt A",Washington,DC,20009,,,"1824 19th Street, NW Apt A, Washington, DC 20009",38.9150487,-77.0463013
+Rec U8,Dov,Bushinsky,M,1/27/2017,2016 Klingle Rd NW,Washington,DC,20010,,,"2016 Klingle Rd NW, Washington, DC 20010",38.9326773,-77.0486835
+Rec U8,Ashwin,Hariani,M,1/27/2017,60 Randolph Pl. NW.,Washington,DC,20001,,,"60 Randolph Pl. NW., Washington, DC 20001",38.9131953,-77.0124549
+Rec U8,Layla,Mains,F,1/27/2017,5524 9th St NW Unit 4,Washington,DC,20011,,,"5524 9th St NW Unit 4, Washington, DC 20011",38.9569151,-77.0287099
+Rec U8,Isla,Abrams,F,1/27/2017,3050 Monroe Street NE,Washington,DC,20018,,,"3050 Monroe Street NE, Washington, DC 20018",38.9330846,-76.9682632
+Rec U8,Vivian,Mechenbier,F,1/28/2017,3949 Garrison St NW,Washington,DC,20016,,,"3949 Garrison St NW, Washington, DC 20016",38.9561953,-77.0819731
+Rec U8,Noemi,Pean-Augarten,F,1/28/2017,1831 Monroe St NE,Washington,DC,20018,,,"1831 Monroe St NE, Washington, DC 20018",38.9329505,-76.9801459
+Rec U8,Joaquin,Muslin,M,1/29/2017,713 Nicholson ST NW,Washington,DC,20011,,,"713 Nicholson ST NW, Washington, DC 20011",38.9603561,-77.0256655
+Rec U8,Elisa,Hestness Frazell,F,1/29/2017,3208 Warder St NW,Washington,DC,20010,,,"3208 Warder St NW, Washington, DC 20010",38.9305854,-77.0227038
+Rec U8,Benjamin,Turk,M,1/30/2017,2630 Garfield Street NW,Washington,DC,20008,,,"2630 Garfield Street NW, Washington, DC 20008",38.9265013,-77.0573209
+Rec U8,Arabella,Bank,F,1/31/2017,3225 Patterson Street Northwest,Washington,DC,20015,,,"3225 Patterson Street Northwest, Washington, DC 20015",38.9678979,-77.0674948
+Rec U8,Catherine (Cate),Kenny,F,1/31/2017,5514 Western Ave,Chevy Chase,MD,20815,,,"5514 Western Ave, Chevy Chase, MD 20815",38.9645913,-77.0840226
+Rec U8,Ophelia,Athmer,F,1/31/2017,2242 Bunker Hill Rd. NE,Washington,DC,20018,,,"2242 Bunker Hill Rd. NE, Washington, DC 20018",38.9390689,-76.9751162
+Rec U8,Nia,R,F,2/2/2017,"2801 Quebec Street NW, Apt 545",Washington ,DC,20008,,,"2801 Quebec Street NW, Apt 545, Washington , DC 20008",38.9372259,-77.0585497
+Rec U8,William,Brown,M,2/3/2017,5311 1st St NW,Washington,DC,20011,,,"5311 1st St NW, Washington, DC 20011",38.9550129,-77.0139517
+Rec U8,Harper,Williams,F,2/4/2017,5411 5th St NW,Washington,DC,20011,,,"5411 5th St NW, Washington, DC 20011",38.9557654,-77.0221713
+Rec U8,Ava Grace,Terry,F,2/5/2017,1709 Otis Place NE ,Washington ,DC,20018,,,"1709 Otis Place NE , Washington , DC 20018",38.9355143,-76.9834583
+Rec U8,Marley,Godoy,F,2/6/2017,3650 Fordham Rd NW,Washington,DC,20016,,,"3650 Fordham Rd NW, Washington, DC 20016",38.9377408,-77.1031544
+Rec U8,Hudson,Schaefer,M,2/7/2017,607 Rock Creek Church Road NW,Washington,DC,20010,,,"607 Rock Creek Church Road NW, Washington, DC 20010",38.9373294,-77.0230933
+Rec U8,Jane,Stifel,F,2/7/2017,4950 Hillbrook lane nw,Washington ,DC,20016,,,"4950 Hillbrook lane nw, Washington , DC 20016",38.9365507,-77.100805
+Rec U8,Ella,Blodnikar,F,2/11/2017,2300 Ontario Rd NW,Washington,DC,20009,,,"2300 Ontario Rd NW, Washington, DC 20009",38.9200485,-77.0425218
+Rec U8,Xavier,Loomis-Grewal,M,2/12/2017,4303 4th St NW,Washington,DC,20011,,,"4303 4th St NW, Washington, DC 20011",38.9434165,-77.0195692
+Rec U8,Theo,Hart,M,2/13/2017,3736 Huntington St NW,Washington,DC,20015,,,"3736 Huntington St NW, Washington, DC 20015",38.9575175,-77.0758323
+Rec U8,Arianna,Johnson,F,2/13/2017,4030 Lee St NE,WASHINGTON,DC,20019,,,"4030 Lee St NE, WASHINGTON, DC 20019",38.9044397,-76.9480063
+Rec U8,Drew,O’Brien,M,2/15/2017,3043 Oliver St NW,Washington,DC,20015,,,"3043 Oliver St NW, Washington, DC 20015",38.9673124,-77.0615213
+Rec U8,Emmeline,Staffa,F,2/15/2017,4118 38th Street NW,Washington,DC,20016,,,"4118 38th Street NW, Washington, DC 20016",38.9429835,-77.0774103
+Rec U8,John,Haines,M,2/17/2017,2844 30th Street NE,Washington ,DC,20018,,,"2844 30th Street NE, Washington , DC 20018",38.9279782,-76.9669822
+Rec U8,Olivia,Worthington,F,2/17/2017,3302 19th St NW,Washington ,DC,20010,,,"3302 19th St NW, Washington , DC 20010",38.9335029,-77.0470054
+Rec U8,Mateo,Suros,M,2/18/2017,4604 Butterworth Pl. NW,Washington,DC,20016,,,"4604 Butterworth Pl. NW, Washington, DC 20016",38.9486303,-77.093641
+Rec U8,Ellie,Meenan,F,2/18/2017,4220 Jenifer Street NW,Washington,DC,20015,,,"4220 Jenifer Street NW, Washington, DC 20015",38.9588131,-77.0857549
+Rec U8,Rafael,Arellano,M,2/20/2017,1326 Hemlock St NW,WASHINGTON,DC,20012,,,"1326 Hemlock St NW, WASHINGTON, DC 20012",38.9811104,-77.0344409
+Rec U8,Roman,Calafiura,M,2/21/2017,3413 R Street NW,Washington,DC,20007,,,"3413 R Street NW, Washington, DC 20007",38.913881,-77.071092
+Rec U8,Alessio,Savoji,M,2/22/2017,3101 new mexico ave nw,washington,DC,20016,,,"3101 new mexico ave nw, washington, DC 20016",38.9329255,-77.0854177
+Rec U8,Tilly,Bellman,F,2/22/2017,1917 Biltmore St NW,Washington,DC,20009,,,"1917 Biltmore St NW, Washington, DC 20009",38.9225818,-77.0478128
+Rec U8,Max,Bance,M,2/23/2017,3216 44th Street NW,Washington ,DC,20016,,,"3216 44th Street NW, Washington , DC 20016",38.9331981,-77.0890993
+Rec U8,grayson,kassa,M,2/23/2017,7222 delfield st,chevy chase ,MD,20815,,,"7222 delfield st, chevy chase , MD 20815",38.9828978,-77.0717255
+Rec U8,Huck,O'Brien,M,2/24/2017,"1650 Beekman Place NW, unit C",Washington,DC,20009,,,"1650 Beekman Place NW, unit C, Washington, DC 20009",38.9190628,-77.0415939
+Rec U8,Rebecca,Ortiz,F,2/24/2017,"5032 41st St, NW",Washington,DC,20016,,,"5032 41st St, NW, Washington, DC 20016",38.9556333,-77.083147
+Rec U8,Nicole,Amlalo,F,2/24/2017,2701 Brentwood Rd NE ,Washington,DC,20018,,,"2701 Brentwood Rd NE , Washington, DC 20018",38.9319061,-76.9707403
+Rec U8,Millie,Stanley,F,2/24/2017,4722 Rodman Street NW,Washington,DC,20016,,,"4722 Rodman Street NW, Washington, DC 20016",38.9391424,-77.0962878
+Rec U8,Ella,Kearns,F,2/28/2017,1504 Otis Street NE ,Washington ,DC,20017,,,"1504 Otis Street NE , Washington , DC 20017",38.9350977,-76.9865727
+Rec U8,Elliott,McGoohan,F,3/1/2017,4550 30th Street NW,Washington,DC,20008,,,"4550 30th Street NW, Washington, DC 20008",38.9494837,-77.0645529
+Rec U8,James,DiClerico,M,3/2/2017,3511 Legation St NW,Washington,DC,20015,,,"3511 Legation St NW, Washington, DC 20015",38.9622348,-77.0717711
+Rec U8,Olivia,Daza,F,3/6/2017,3400 North Piedmont Street,Arlington,VA,22207,,,"3400 North Piedmont Street, Arlington, VA 22207",38.917282,-77.1199317
+Rec U8,Matias,Pachon Barrera,M,3/7/2017,2903 12th Street NE,Washington,DC,20017,,,"2903 12th Street NE, Washington, DC 20017",38.9267494,-76.9928743
+Rec U8,James,Dungan,M,3/8/2017,423 Quincy St NW,Washington ,DC,20011,,,"423 Quincy St NW, Washington , DC 20011",38.9380394,-77.0205356
+Rec U8,Ishan,Lugo,M,3/10/2017,2136 Cathedral Avenue NW,Washington,DC,20008,,,"2136 Cathedral Avenue NW, Washington, DC 20008",38.9247427,-77.0527315
+Rec U8,Cole,Chandler,M,3/13/2017,62 T St NW,Washington ,DC,20001,,,"62 T St NW, Washington , DC 20001",38.9157298,-77.0114301
+Rec U8,Laila,Nadel,F,3/14/2017,557 Regent Pl NE,Washington,DC,20017,,,"557 Regent Pl NE, Washington, DC 20017",38.9286036,-77.0009125
+Rec U8,William (Wade),Bushey,M,3/15/2017,4438 Macomb Street NW,Washington,DC,20016,,,"4438 Macomb Street NW, Washington, DC 20016",38.9333066,-77.090697
+Rec U8,Grace,Lartey,F,3/15/2017,1618 Newton St NE,Washington ,DC,20018,,,"1618 Newton St NE, Washington , DC 20018",38.9342177,-76.9843997
+Rec U8,Nora,Savage-Snyder,F,3/15/2017,"2947 Arizona Ave, NW",Washington,DC,20016,,,"2947 Arizona Ave, NW, Washington, DC 20016",38.9298275,-77.1024257
+Rec U8,Niko,Milsom,M,3/16/2017,5320 28th Street NW,Washington,DC,20015,,,"5320 28th Street NW, Washington, DC 20015",38.9591828,-77.0604995
+Rec U8,Reed,Sterchi,F,3/18/2017,1315 31st Street NW,Washington,DC,20007,,,"1315 31st Street NW, Washington, DC 20007",38.9074877,-77.063558
+Rec U8,Zeki,Adams-Fikri,M,3/20/2017,6527 Piney Branch Road NW,Washington,DC,20012,,,"6527 Piney Branch Road NW, Washington, DC 20012",38.9697506,-77.0277115
+Rec U8,Thomas,Hailey,M,3/20/2017,4630 Chesapeake Street NW,Washington,DC,20016,,,"4630 Chesapeake Street NW, Washington, DC 20016",38.9508803,-77.0944143
+Rec U8,Webster,Beary,M,3/20/2017,8501 Lynwood Place,Chevy Chase,MD,20815,,,"8501 Lynwood Place, Chevy Chase, MD 20815",38.9952598,-77.0813516
+Rec U8,Loula,Blake,F,3/20/2017,2844 27th st. NW,Washington,DC,20008,,,"2844 27th st. NW, Washington, DC 20008",38.9278563,-77.0581815
+Rec U8,Ella,Gibson,F,3/21/2017,3718 17th St NE,Washington,DC,20018,,,"3718 17th St NE, Washington, DC 20018",38.935697,-76.9842037
+Rec U8,Rowan,Gibson,F,3/21/2017,3718 17th St NE,Washington,DC,20018,,,"3718 17th St NE, Washington, DC 20018",38.935697,-76.9842037
+Rec U8,Emin,Abbasov,M,3/22/2017,1123 11TH ST NW,Washington,DC,20001,,,"1123 11TH ST NW, Washington, DC 20001",38.905217,-77.0293128
+Rec U8,Maia,Arguello Tejada,F,3/22/2017,2501 Porter Street  NW,Washington,DC,20008,,,"2501 Porter Street  NW, Washington, DC 20008",38.9354615,-77.0565477
+Rec U8,Tristan,De Bono,M,3/23/2017,4100 Fessenden Street NW,Washington,DC,20016,,,"4100 Fessenden Street NW, Washington, DC 20016",38.9544902,-77.0830801
+Rec U8,Audrey,Hou,F,3/23/2017,3756 Benton St NW,Washington,DC,20007,,,"3756 Benton St NW, Washington, DC 20007",38.9204422,-77.0781691
+Rec U8,Theodore,Bronstein,M,3/25/2017,3027 Tennyson st NW,Washington ,DC,20015,,,"3027 Tennyson st NW, Washington , DC 20015",38.9730626,-77.0616072
+Rec U8,Elliott,Kamphaus,F,3/27/2017,11 S ST NW UNIT 1,Washington ,DC,20001,,,"11 S ST NW UNIT 1, Washington , DC 20001",38.9143242,-77.0121863
+Rec U8,Simone,Henry,F,3/29/2017,800 Delafield PL NW,Washington,DC,20011,,,"800 Delafield PL NW, Washington, DC 20011",38.9488977,-77.0264337
+Rec U8,Evan,Lehker,M,3/30/2017,1706 Irving Street NW,Washington,DC,20010,,,"1706 Irving Street NW, Washington, DC 20010",38.9286046,-77.0420314
+Rec U8,Chiara,Lerro-Di Marco,F,4/1/2017,5 Missouri Ave NW,Washington,DC,20011,,,"5 Missouri Ave NW, Washington, DC 20011",38.95515,-77.0120791
+Rec U8,Amaré,Belgrave,M,4/2/2017,3633 INGOMAR PL NW,WASHINGTON,DC,20015,,,"3633 INGOMAR PL NW, WASHINGTON, DC 20015",38.9585207,-77.0720186
+Rec U8,Ricki,Makings,F,4/3/2017,700 Capitol Square Place SW,Washington,DC,20024,,,"700 Capitol Square Place SW, Washington, DC 20024",38.881854,-77.0249942
+Rec U8,Bodhi,Dao,M,4/4/2017,706 Otis Place Northwest,Washington,DC,20010,,,"706 Otis Place Northwest, Washington, DC 20010",38.9344693,-77.0250445
+Rec U8,Hopkins,Llewellyn,F,4/4/2017,4834 Sedgwick St Nw,Washington,DC,20016,,,"4834 Sedgwick St Nw, Washington, DC 20016",38.9401612,-77.0982309
+Rec U8,Matthew,Dugan,M,4/6/2017,4300 Dunnel Lane,Kensington,MD,20895,,,"4300 Dunnel Lane, Kensington, MD 20895",39.0123904,-77.0872976
+Rec U8,Beckett,Cook,M,4/7/2017,1213 Emerson St NW,Washington,DC,20011,,,"1213 Emerson St NW, Washington, DC 20011",38.9499176,-77.0309896
+Rec U8,Kasra,Sadeghi,M,4/11/2017,2851 Chesterfield Pl. NW,Washington,DC,20008,,,"2851 Chesterfield Pl. NW, Washington, DC 20008",38.9513455,-77.0602851
+Rec U8,Ozzy,Abrams,M,4/11/2017,468 N Street SW,Washington,DC,20024,,,"468 N Street SW, Washington, DC 20024",38.874515,-77.0210437
+Rec U8,Bronwyn,Jones,F,4/12/2017,5116 Macomb St NW,Washington,DC,20016,,,"5116 Macomb St NW, Washington, DC 20016",38.9327931,-77.107695
+Rec U8,Zafar,Qureshi,M,4/13/2017,5238 Nebraska Avenue,Washington,DC,20015,,,"5238 Nebraska Avenue, Washington, DC 20015",38.9586929,-77.071074
+Rec U8,Everett,Lee-Ashley,M,4/13/2017,307 I St SE,Washington,DC,20003,,,"307 I St SE, Washington, DC 20003",38.8790865,-77.0042437
+Rec U8,Ada,Robinson,F,4/14/2017,5410 Kansas Ave NW,Washington,DC,20011,,,"5410 Kansas Ave NW, Washington, DC 20011",38.9562064,-77.0182036
+Rec U8,Nicolas,Hayeslip,M,4/15/2017,4952 Butterworth Place,Washington,DC,20016,,,"4952 Butterworth Place, Washington, DC 20016",38.9485872,-77.1013799
+Rec U8,Caleb,Trotter,M,4/15/2017,2118 Tunlaw Rd NW,Washington,DC,20007,,,"2118 Tunlaw Rd NW, Washington, DC 20007",38.9187665,-77.0752826
+Rec U8,Aiden,Crawford,M,4/15/2017,5415 14th pl,Hyattsville,MD,20782,,,"5415 14th pl, Hyattsville, MD 20782",38.9556351,-76.9879764
+Rec U8,Wylie,Mackie,F,4/15/2017,3104 Leland St,Chevy Chase,MD,20815,,,"3104 Leland St, Chevy Chase, MD 20815",38.9844048,-77.0648002
+Rec U8,Ximena,Sagado-Sosa,F,4/17/2017,1220 12th st nw #709,Washington,DC,20005,,,"1220 12th st nw #709, Washington, DC 20005",38.9062766,-77.0310353
+Rec U8,Maya,Damgaard,F,4/18/2017,2033 Park Rd NW,Washington ,DC,20010,,,"2033 Park Rd NW, Washington , DC 20010",38.9343129,-77.0477571
+Rec U8,Anna,Oelschlager,F,4/18/2017,"3754 W Street, NW",Washington,DC,20007,,,"3754 W Street, NW, Washington, DC 20007",38.9189577,-77.0777711
+Rec U8,Leo,Cleckley,M,4/20/2017,4900 3rd St NW,Washington ,DC,20011,,,"4900 3rd St NW, Washington , DC 20011",38.9501997,-77.0186535
+Rec U8,Mateo,Godoy,M,4/21/2017,7600 Morningside Dr. NW,Washington ,DC,20012,,,"7600 Morningside Dr. NW, Washington , DC 20012",38.9824843,-77.0344279
+Rec U8,Bennett,Woodward,M,4/21/2017,1808 Park Road NW,Washington,DC,20010,,,"1808 Park Road NW, Washington, DC 20010",38.9321302,-77.044321
+Rec U8,Naavika,Patel,F,4/21/2017,2915 Ellicott St NW,"Washington, DC",DC,20008,,,"2915 Ellicott St NW, Washington, DC, DC 20008",38.9537549,-77.0625759
+Rec U8,Etta,Wilson,F,4/21/2017,4926 30th st nw,Washington ,DC,20008,,,"4926 30th st nw, Washington , DC 20008",38.9542301,-77.0638558
+Rec U8,Patrick,McCann,M,4/22/2017,"4700 Sedgwick St., NW",Washington,DC,20016,,,"4700 Sedgwick St., NW, Washington, DC 20016",38.9401591,-77.0954645
+Rec U8,Dominic,Shek,M,4/22/2017,1649 U ST SE,Washington,DC,20020,,,"1649 U ST SE, Washington, DC 20020",38.8648012,-76.9828956
+Rec U8,Quinn,Myler,F,4/22/2017,5302 Reno Road NW,Washington,DC,20015,,,"5302 Reno Road NW, Washington, DC 20015",38.959264,-77.0815798
+Rec U8,Oviya,Kandaswamy,F,4/23/2017,3726 Albemarle Street NW,Washington,DC,20016,,,"3726 Albemarle Street NW, Washington, DC 20016",38.9476662,-77.0763262
+Rec U8,Ellis,Damassa,M,4/24/2017,408 Crittenden Street NW,Washington,DC,20011,,,"408 Crittenden Street NW, Washington, DC 20011",38.9472554,-77.0204971
+Rec U8,Hudson,Cook,M,4/25/2017,PO Box 32273,Washington ,DC,20007,,,"PO Box 32273, Washington , DC 20007",38.899029,-77.1288614
+Rec U8,Lucas,Serrano,M,4/28/2017,"1903 Kalorama Pl NW, Unit 20",Washington,DC,20009,,,"1903 Kalorama Pl NW, Unit 20, Washington, DC 20009",38.9196661,-77.0476446
+Rec U8,Eloise,Remo,F,4/28/2017,1018 8th Street NE,Washington,DC,20002,,,"1018 8th Street NE, Washington, DC 20002",38.8907006,-77.0155521
+Rec U8,Sally,DYER,F,4/30/2017,138 Bryant Street NW,Washington DC,DC,20001,,,"138 Bryant Street NW, Washington DC, DC 20001",38.9211321,-77.0138564
+Rec U8,Sean,Bunker,M,5/2/2017,4340 Davenport Street Northwest,Washington,DC,20016,,,"4340 Davenport Street Northwest, Washington, DC 20016",38.9519526,-77.0883606
+Rec U8,Athan,Capellan-Garache,M,5/2/2017,1432 clifton St NW Apt 7,Washington ,DC,20009,,,"1432 clifton St NW Apt 7, Washington , DC 20009",38.9224033,-77.0369573
+Rec U8,Easton,Canedy,M,5/4/2017,3143 Fort Lincoln Dr NE,Washington,DC,20018,,,"3143 Fort Lincoln Dr NE, Washington, DC 20018",38.9259976,-76.9624169
+Rec U8,Dalya,Hajdenberg,F,5/8/2017,4602  Harrison ST,Chevy Chase,MD,20815,,,"4602  Harrison ST, Chevy Chase, MD 20815",38.9571978,-77.093738
+Rec U8,Gwen,Doyle,F,5/8/2017,3510 Macomb St NW,Washington,DC,20016,,,"3510 Macomb St NW, Washington, DC 20016",38.933232,-77.0723589
+Rec U8,Julian,Driscoll,M,5/9/2017,3107 17th St. NW,Washington,DC,20010,,,"3107 17th St. NW, Washington, DC 20010",38.9293967,-77.0412162
+Rec U8,Clara,Tocchini-Valentini,F,5/9/2017,"4600 Connecticut Ave, NW",Washington ,DC,20008,,,"4600 Connecticut Ave, NW, Washington , DC 20008",38.950299,-77.0701073
+Rec U8,Georgia,Bruce,F,5/9/2017,2035 37th St NW,Washington,DC,20007,,,"2035 37th St NW, Washington, DC 20007",38.9179376,-77.0753538
+Rec U8,Eleanor,Theiss,F,5/12/2017,1239 Monroe St NE,Washington,DC,20017,,,"1239 Monroe St NE, Washington, DC 20017",38.9323885,-76.9923433
+Rec U8,James,Werman,M,5/15/2017,3132 Oliver Street NW,Washington,DC,20015,,,"3132 Oliver Street NW, Washington, DC 20015",38.9665317,-77.0654536
+Rec U8,Elyse,Prieto,F,5/16/2017,7402 Meadow Ln,Chevy Chase,MD,20815,,,"7402 Meadow Ln, Chevy Chase, MD 20815",38.9842547,-77.0830136
+Rec U8,Gabriel,Hensel,M,5/18/2017,3244 McKinley St. NW,Washington,DC,20015,,,"3244 McKinley St. NW, Washington, DC 20015",38.9647444,-77.0684882
+Rec U8,Nelson,Swalwell,M,5/18/2017,209 S St NE,Washington,DC,20002,,,"209 S St NE, Washington, DC 20002",38.9138821,-77.005457
+Rec U8,Chloé,Molinuevo,F,5/18/2017,81 P St NW,Washington,DC,20001,,,"81 P St NW, Washington, DC 20001",38.9098991,-77.0142609
+Rec U8,Ayla,Molinuevo,F,5/18/2017,81 P St NW,Washington,DC,20001,,,"81 P St NW, Washington, DC 20001",38.9098991,-77.0142609
+Rec U8,Gervacio,Bauman,M,5/19/2017,4002 5th ST NW,Washington,DC,20011,,,"4002 5th ST NW, Washington, DC 20011",38.9401203,-77.0218853
+Rec U8,Elliot,Kreisel,M,5/20/2017,1829 Monroe St NE,Washington,DC,20018,,,"1829 Monroe St NE, Washington, DC 20018",38.9329353,-76.980251
+Rec U8,Jack,Erkel,M,5/20/2017,2000 48th ST NW,Washington ,DC,20007,,,"2000 48th ST NW, Washington , DC 20007",38.9172399,-77.0972737
+Rec U8,Eleanor,Clifford,F,5/23/2017,1849 Lamont St. NW ,Washington,DC,20010,,,"1849 Lamont St. NW , Washington, DC 20010",38.9316779,-77.0458261
+Rec U8,Sadie,McDermott,F,5/24/2017,1217 Quincy Street NE,Washington ,DC,20017,,,"1217 Quincy Street NE, Washington , DC 20017",38.9370857,-76.992465
+Rec U8,Sylvie,Wise,F,5/25/2017,3703 JENIFER ST NW,Washington,DC,20015,,,"3703 JENIFER ST NW, Washington, DC 20015",38.9592395,-77.0728304
+Rec U8,Miles,Hechter,M,5/26/2017,1602 Allison St NW,Washington,DC,20011,,,"1602 Allison St NW, Washington, DC 20011",38.9448431,-77.0397881
+Rec U8,Audie,Cohen,M,5/26/2017,610 Kenyon Street NW,Washington,DC,20010,,,"610 Kenyon Street NW, Washington, DC 20010",38.9298544,-77.0240045
+Rec U8,Charlie,Dryden,M,5/26/2017,3131 Davenport St NW,Washington,DC,20008,,,"3131 Davenport St NW, Washington, DC 20008",38.9521089,-77.0673748
+Rec U8,Sophia,Fair,F,5/26/2017,127 U St NE,Washington,DC,20002,,,"127 U St NE, Washington, DC 20002",38.917012,-77.0145576
+Rec U8,Jhaliza,Mejia,F,5/27/2017,5553 South Dakota Ave NE,Washington ,DC,20011,,,"5553 South Dakota Ave NE, Washington , DC 20011",38.9567502,-77.0042465
+Rec U8,Eliza,Barr,F,5/27/2017,3719 Oakview Terrace NE,WASHINGTON,DC,20017,,,"3719 Oakview Terrace NE, WASHINGTON, DC 20017",38.9357269,-76.9927294
+Rec U8,Harper,Bush,F,5/28/2017,3712 Jocelyn Street NW,Washington,DC,20015,,,"3712 Jocelyn Street NW, Washington, DC 20015",38.9595146,-77.0731717
+Rec U8,Noah,Hanson,M,5/29/2017,1840 Biltmore St NW,Washington,DC,20009,,,"1840 Biltmore St NW, Washington, DC 20009",38.92215,-77.0470212
+Rec U8,Margot,De Laperouse,F,5/30/2017,5202 Roosevelt Street,Bethesda,MD,20814,,,"5202 Roosevelt Street, Bethesda, MD 20814",38.9958305,-77.1080746
+Rec U8,Niko,Bergey,M,6/1/2017,1832 biltmore street nw 43,Washington,DC,20009,,,"1832 biltmore street nw 43, Washington, DC 20009",38.921969,-77.0468057
+Rec U8,Fiona,Lemon,F,6/1/2017,5229 New Hampshire Ave NW,Washington,DC,20011,,,"5229 New Hampshire Ave NW, Washington, DC 20011",38.954215,-77.0132964
+Rec U8,Samson,Battjer,M,6/2/2017,1772 Kilbourne Pl NW,Washington,DC,20010,,,"1772 Kilbourne Pl NW, Washington, DC 20010",38.9303482,-77.0437117
+Rec U8,DORA,SAKRAK,F,6/3/2017,4012 Edmunds Street NW,Washington ,DC,20007,,,"4012 Edmunds Street NW, Washington , DC 20007",38.9244675,-77.0822942
+Rec U8,Frances,Strelka,F,6/4/2017,2028 Allen Place NW,Washington,DC,20009,,,"2028 Allen Place NW, Washington, DC 20009",38.9212223,-77.0501412
+Rec U8,Livia,Ruta,F,6/4/2017,1845 Lamont Street NW,Washington ,DC,20010,,,"1845 Lamont Street NW, Washington , DC 20010",38.9316818,-77.0456819
+Rec U8,Miles,Malcolm,M,6/5/2017,4442 Westover Place Northwest,Washington,DC,20016,,,"4442 Westover Place Northwest, Washington, DC 20016",38.9352666,-77.0880797
+Rec U8,Nicolo,Palloni,M,6/5/2017,3706 Jocelyn St NW,Washington,DC,20015,,,"3706 Jocelyn St NW, Washington, DC 20015",38.9595309,-77.0729537
+Rec U8,Eric,Cajner Cairo,M,6/5/2017,3101 New Mexico Ave NW Apt 819,Washington,DC,20016,,,"3101 New Mexico Ave NW Apt 819, Washington, DC 20016",38.9313251,-77.087343
+Rec U8,Leo,Gabbert,M,6/6/2017,1817 Irving St NW,Washington ,DC,20010,,,"1817 Irving St NW, Washington , DC 20010",38.9290825,-77.0447341
+Rec U8,FIona,Doten-Ryan,F,6/6/2017,5341 SHerier Pl NW,Washington ,DC,20016,,,"5341 SHerier Pl NW, Washington , DC 20016",38.9280295,-77.1084109
+Rec U8,Camila,Williams,F,6/6/2017,3760 Benton St.,Washington,DC,20007,,,"3760 Benton St., Washington, DC 20007",38.920442,-77.0783052
+Rec U8,Samuel,Booker,M,6/7/2017,4530 Brandywine St NW,Washington,DC,20016,,,"4530 Brandywine St NW, Washington, DC 20016",38.9494712,-77.0925165
+Rec U8,Oliver,Bamman,M,6/10/2017,3234 Walbridge Pl nw,Washington,DC,20010,,,"3234 Walbridge Pl nw, Washington, DC 20010",38.9325924,-77.0481958
+Rec U8,E,Rosskamm,M,6/10/2017,3727 Brandywine St NW,Washington,DC,20016,,,"3727 Brandywine St NW, Washington, DC 20016",38.9499367,-77.0765036
+Rec U8,Rita,Ramakrishnan,F,6/10/2017,2370 Champlain St. NW Apt. 35,Washington,DC,20009,,,"2370 Champlain St. NW Apt. 35, Washington, DC 20009",38.9217698,-77.0441654
+Rec U8,Alessandro,Zucchini,M,6/12/2017,4357 Embassy Park Dr NW,Washington,DC,20016,,,"4357 Embassy Park Dr NW, Washington, DC 20016",38.9342582,-77.0879188
+Rec U8,Theodor,Hazlehurst,M,6/12/2017,2702 24th st NE ,Washington ,DC,20018,,,"2702 24th st NE , Washington , DC 20018",38.9248772,-76.9750237
+Rec U8,Mateo,Luna Hand,M,6/13/2017,4549 South Dakota Avenue NE,Washington,DC,20017,,,"4549 South Dakota Avenue NE, Washington, DC 20017",38.9456554,-76.9895989
+Rec U8,Alexander,LaPrade,M,6/14/2017,3625 South Dakota Ave NE,Washington,DC,20018,,,"3625 South Dakota Ave NE, Washington, DC 20018",38.9349135,-76.9775908
+Rec U8,Redmon,Taylor,M,6/16/2017,47 Hanover Pl NW,Washington ,DC,20001,,,"47 Hanover Pl NW, Washington , DC 20001",38.9080521,-77.0130258
+Rec U8,Devam,Patel,M,6/17/2017,1656 Hobart St NW,Washington,DC,20009,,,"1656 Hobart St NW, Washington, DC 20009",38.927773,-77.0420791
+Rec U8,Ben,Pfeiffer,M,6/19/2017,4415 13th Street NE,Washington ,DC,20017,,,"4415 13th Street NE, Washington , DC 20017",38.9433024,-76.9906067
+Rec U8,Myles,Cutler,M,6/20/2017,2441 39th St NW,Washington,DC,20007,,,"2441 39th St NW, Washington, DC 20007",38.92211,-77.0793814
+Rec U8,Alexandra,Lowery,F,6/20/2017,7910 13th Street Northwest,Washington,DC,20012,,,"7910 13th Street Northwest, Washington, DC 20012",38.9858274,-77.0325516
+Rec U8,Charlotte,Kimlin,F,6/20/2017,2923 Chancellors Way NE,Washington ,DC,20017,,,"2923 Chancellors Way NE, Washington , DC 20017",38.9273635,-77.000307
+Rec U8,Justin,Wassenich,M,6/21/2017,6948 33rd St NW,Washington ,DC,20015,,,"6948 33rd St NW, Washington , DC 20015",38.9811146,-77.0612024
+Rec U8,Rosalie,Gouedart,F,6/22/2017,1822 Taylor St NE,Washington,DC,20018,,,"1822 Taylor St NE, Washington, DC 20018",38.9409317,-76.9819254
+Rec U8,Genevieve,Spratt,F,6/22/2017,3700 Military Road NW,Washington,DC,20015,,,"3700 Military Road NW, Washington, DC 20015",38.9608078,-77.0735595
+Rec U8,Yuanbo,Han,M,6/26/2017,2300 Connecticut Ave NW,Washington,DC,20008,,,"2300 Connecticut Ave NW, Washington, DC 20008",38.9186675,-77.0518767
+Rec U8,Zara,Zachmann,F,6/27/2017,5205 Saratoga Ave,Chevy Chase ,MD,20815,,,"5205 Saratoga Ave, Chevy Chase , MD 20815",38.9598679,-77.0975708
+Rec U8,Kitt,Stark,M,6/28/2017,2801 New Mexico Ave NW #820,Washington,DC,20007,,,"2801 New Mexico Ave NW #820, Washington, DC 20007",38.9261667,-77.083786
+Rec U8,Olivia,Assenza,F,6/28/2017,2213 39TH ST NW,WASHINGTON,DC,20007,,,"2213 39TH ST NW, WASHINGTON, DC 20007",38.9196659,-77.0803246
+Rec U8,Adam,Histed,M,6/29/2017,1733 Harvard Street NW,Washington,DC,20009,,,"1733 Harvard Street NW, Washington, DC 20009",38.9274603,-77.0434483
+Rec U8,Elizabeth,Robuck,F,6/29/2017,5327 Falmouth Rd,Bethesda,MD,20816,,,"5327 Falmouth Rd, Bethesda, MD 20816",38.953777,-77.111059
+Rec U8,Atlas,Yu,M,6/30/2017,1323 Quincy St NW,Washington,DC,20011,,,"1323 Quincy St NW, Washington, DC 20011",38.9378319,-77.0331624
+Rec U8,Gus,Bryan,M,7/2/2017,1813 Randolph St NE,Washington,DC,20018,,,"1813 Randolph St NE, Washington, DC 20018",38.9381099,-76.981886
+Rec U8,Carter,Mattingly,M,7/5/2017,3706 Spring Street,Chevy Chase,MD,20815,,,"3706 Spring Street, Chevy Chase, MD 20815",38.9788705,-77.0774264
+Rec U8,Jasper,Davis,M,7/5/2017,4721 Ellicott St NW ,Washington,DC,20016,,,"4721 Ellicott St NW , Washington, DC 20016",38.953559,-77.096182
+Rec U8,Ansel,Hoffman,F,7/6/2017,1845 irving st nw,Washington,DC,20010,,,"1845 irving st nw, Washington, DC 20010",38.9292752,-77.0459035
+Rec U8,Emilio,Ramos,M,7/7/2017,1019 Lamont st Nw,Washington,DC,20010,,,"1019 Lamont st Nw, Washington, DC 20010",38.9309481,-77.0298863
+Rec U8,Jasper,Hand,M,7/7/2017,2110 4th Street NE,Washington,DC,20002,,,"2110 4th Street NE, Washington, DC 20002",38.918436,-77.0034404
+Rec U8,Daniel,Buff,M,7/7/2017,2442 Ontario Rd NW,Washington,DC,20009,,,"2442 Ontario Rd NW, Washington, DC 20009",38.9217618,-77.0429888
+Rec U8,Ophelia,Marcus,F,7/7/2017,22 Hesketh Street,Chevy Chase,MD,20815,,,"22 Hesketh Street, Chevy Chase, MD 20815",38.9683207,-77.0840411
+Rec U8,Vesper,Flench,F,7/7/2017,5209 Chevy Chase Pkwy NW,Washington,DC,20015,,,"5209 Chevy Chase Pkwy NW, Washington, DC 20015",38.9574947,-77.073086
+Rec U8,Emmeline,Ryscavage,F,7/7/2017,5408 Spangler ave,Bethesda ,MD,20816,,,"5408 Spangler ave, Bethesda , MD 20816",38.9478514,-77.112408
+Rec U8,Sage,Crisafulli,F,7/7/2017,1004 Upshur Street NE,Washington,DC,20017,,,"1004 Upshur Street NE, Washington, DC 20017",38.941977,-76.9946012
+Rec U8,Abraham,Gerlach,M,7/12/2017,5702 Nevada Ave NW,Washington,DC,20015,,,"5702 Nevada Ave NW, Washington, DC 20015",38.9658447,-77.073436
+Rec U8,Juliana,Goldwein,F,7/12/2017,3403 Rodman St Nw,Washington,DC,20008,,,"3403 Rodman St Nw, Washington, DC 20008",38.939258,-77.0700464
+Rec U8,Tala,Sankaran,F,7/12/2017,2323 1st Street NW,Washington,DC,20001,,,"2323 1st Street NW, Washington, DC 20001",38.9209447,-77.0144071
+Rec U8,Beckett,Williams,M,7/13/2017,3313 17th ST NW,Washington,DC,20010,,,"3313 17th ST NW, Washington, DC 20010",38.9329349,-77.0411833
+Rec U8,Skye,Grinberg,M,7/13/2017,3930 Argyle Terrace NW,Washington,DC,20011,,,"3930 Argyle Terrace NW, Washington, DC 20011",38.939552,-77.0465252
+Rec U8,Naomi,Clausen-Disu,F,7/13/2017,220 SEATON PL NE,WASHINGTON,DC,20002,,,"220 SEATON PL NE, WASHINGTON, DC 20002",38.9150285,-77.0054068
+Rec U8,Bernie,Voosen,M,7/16/2017,214 P St NW,Washington,DC,20001,,,"214 P St NW, Washington, DC 20001",38.9094464,-77.0166578
+Rec U8,George,Howard,M,7/16/2017,3269 Beech Street NW,Washington,DC,20015,,,"3269 Beech Street NW, Washington, DC 20015",38.9790038,-77.0634102
+Rec U8,Santiago,Landa-Blanco,M,7/17/2017,1707 Columbia Rd NW Apt 105,Washington,DC,20009,,,"1707 Columbia Rd NW Apt 105, Washington, DC 20009",38.925081,-77.0421927
+Rec U8,Lidya,Buffington,F,7/17/2017,3006 Arizona Avenue NW,Washington,DC,20016,,,"3006 Arizona Avenue NW, Washington, DC 20016",38.9306526,-77.1022049
+Rec U8,Keira,Patil,F,7/19/2017,1743 Hobart Street NW,Washington,DC,20009,,,"1743 Hobart Street NW, Washington, DC 20009",38.9281721,-77.0438218
+Rec U8,Brianna,Nondohou,F,7/19/2017,3627 Minnesota Ave SE,Washingtin,DC,20019,,,"3627 Minnesota Ave SE, Washingtin, DC 20019",38.8888043,-76.9561012
+Rec U8,Carmen,Burke-Chinarro,F,7/20/2017,3913 Illinois Ave. NW,WASHINGTON DC,DC,20011,,,"3913 Illinois Ave. NW, WASHINGTON DC, DC 20011",38.9394453,-77.0191694
+Rec U8,Rosalie,Simpson,F,7/20/2017,4822 Woodway Lane Northwest,Washington,DC,20016,,,"4822 Woodway Lane Northwest, Washington, DC 20016",38.9372468,-77.0978888
+Rec U8,Benjamin,Curry-Drikas,M,7/21/2017,4705 48th Street NW,Washington,DC,20016,,,"4705 48th Street NW, Washington, DC 20016",38.9513442,-77.0966456
+Rec U8,Noah,Bajraktari,M,7/21/2017,4820 Alton Place NW,Washington,DC,20016,,,"4820 Alton Place NW, Washington, DC 20016",38.9469627,-77.0980144
+Rec U8,Theodore,Stilp,M,7/23/2017,1203 Staples St NE,Washington,DC,20002,,,"1203 Staples St NE, Washington, DC 20002",38.9019259,-76.9875618
+Rec U8,Eliana,Panikoff,F,7/23/2017,2136 37th St NW,Washington,DC,20007,,,"2136 37th St NW, Washington, DC 20007",38.9193018,-77.0757462
+Rec U8,Shiloh,Wee,F,7/25/2017,26 Mural Walk NE,Washington,DC,20011,,,"26 Mural Walk NE, Washington, DC 20011",38.9577194,-77.0037692
+Rec U8,Kai,Francis,M,7/26/2017,1503 Gallatin Street NW,Washington,DC,20011,,,"1503 Gallatin Street NW, Washington, DC 20011",38.9513417,-77.0507041
+Rec U8,Colin,Hopkins,M,7/26/2017,"3410 39th St NW, Apt E713",Washington,DC,20016,,,"3410 39th St NW, Apt E713, Washington, DC 20016",38.9346275,-77.0800984
+Rec U8,Ava,Flack,F,7/26/2017,3145 Fort Lincoln Drive NE,Washington,DC,20018,,,"3145 Fort Lincoln Drive NE, Washington, DC 20018",38.9259818,-76.9624798
+Rec U8,Thomas,DiLuccia,M,7/27/2017,5306 Broad Branch Rd NW,Washington,DC,20015,,,"5306 Broad Branch Rd NW, Washington, DC 20015",38.9591762,-77.0682829
+Rec U8,Evangeline,Theriot,F,7/27/2017,1812 Newton St NE,Washington,DC,20018,,,"1812 Newton St NE, Washington, DC 20018",38.9342951,-76.9817514
+Rec U8,Peter,Robertson,M,7/28/2017,4700 Linnean Avenue Northwest,Washington,DC,20008,,,"4700 Linnean Avenue Northwest, Washington, DC 20008",38.9509499,-77.0612424
+Rec U8,Abbi,Goldman,F,7/28/2017,1738 Irving St NW,Washington,DC,20010,,,"1738 Irving St NW, Washington, DC 20010",38.9285985,-77.0431562
+Rec U8,Nora,Kretman,F,7/29/2017,6339 31st Street NW,Washington,DC,20015,,,"6339 31st Street NW, Washington, DC 20015",38.9736223,-77.0618504
+Rec U8,Simon,Sorensen,M,7/30/2017,"1954 Columbia Rd NW, Apt 603",Washington,DC,20009,,,"1954 Columbia Rd NW, Apt 603, Washington, DC 20009",38.9178293,-77.0476538
+Rec U8,Emmeline,Hinson,F,7/31/2017,2921 26th St NE,Washington,DC,20018,,,"2921 26th St NE, Washington, DC 20018",38.9273062,-76.9724971
+Rec U8,Sadie,Spinato-Robie,F,8/1/2017,126 Van Buren St NW,Washington,DC,20012,,,"126 Van Buren St NW, Washington, DC 20012",38.9697635,-77.0153966
+Rec U8,Holden,Segraves,M,8/1/2017,4821 48th St NW,Washington ,DC,20016,,,"4821 48th St NW, Washington , DC 20016",38.9528702,-77.0966945
+Rec U8,Liam,Hoffland,M,8/3/2017,1810 Kilbourne Place NW,Washington,DC,20010,,,"1810 Kilbourne Place NW, Washington, DC 20010",38.9303753,-77.0447417
+Rec U8,Akil,Childs,M,8/4/2017,617 Jefferson Street NW #203,Washington ,DC,20011,,,"617 Jefferson Street NW #203, Washington , DC 20011",38.955196,-77.0238292
+Rec U8,Sterling,McCuiston,F,8/5/2017,5000 Arkansas Ave NW,Washington,DC,20011,,,"5000 Arkansas Ave NW, Washington, DC 20011",38.9511189,-77.0307574
+Rec U8,Duncan,Johnston,M,8/7/2017,3168 18th St NW,Washington ,DC,20010,,,"3168 18th St NW, Washington , DC 20010",38.9310252,-77.0441294
+Rec U8,Tov,Theran,F,8/7/2017,"4807 17th St, NW",Washington,DC,20011,,,"4807 17th St, NW, Washington, DC 20011",38.9490708,-77.0416981
+Rec U8,Kirsten,Hanson,F,8/8/2017,6256 29th St NW,Washington,DC,20015,,,"6256 29th St NW, Washington, DC 20015",38.9717452,-77.0604383
+Rec U8,Ari,White,M,8/9/2017,2303 38th street NW,Washington ,DC,20007,,,"2303 38th street NW, Washington , DC 20007",38.9201255,-77.0784257
+Rec U8,Ines,Stephens,F,8/9/2017,833 Allison St NW,Washington,DC,20011,,,"833 Allison St NW, Washington, DC 20011",38.9453027,-77.0274264
+Rec U8,Addison,Katz-Korkoian,F,8/10/2017,3926 Military Rd. NW,WASHINGTON,DC,20015,,,"3926 Military Rd. NW, WASHINGTON, DC 20015",38.960772,-77.0812508
+Rec U8,Zeke,Bazira,M,8/11/2017,1801 Sudbury Ln NW,Washington,DC,20012,,,"1801 Sudbury Ln NW, Washington, DC 20012",38.9877921,-77.0470304
+Rec U8,Taylor,Gillespie,F,8/13/2017,2022 37th Street NW,Washington,DC,20007,,,"2022 37th Street NW, Washington, DC 20007",38.9174241,-77.0757529
+Rec U8,Charlotte,Murray,F,8/13/2017,5215 Falmouth Rd,Bethesda,MD,20816,,,"5215 Falmouth Rd, Bethesda, MD 20816",38.9522433,-77.1090886
+Rec U8,Levi,Pierre,M,8/14/2017,7225 Western Ave NW,Washington,DC,20015,,,"7225 Western Ave NW, Washington, DC 20015",38.9838636,-77.0583247
+Rec U8,Evie,Park,F,8/14/2017,3921 Ingomar St NW,Washington,DC,20015,,,"3921 Ingomar St NW, Washington, DC 20015",38.9585888,-77.0825962
+Rec U8,Oliver,Grabow,M,8/15/2017,"3541 11TH ST NW, Unit 102",WASHINGTON,DC,20010,,,"3541 11TH ST NW, Unit 102, WASHINGTON, DC 20010",38.9338887,-77.0307858
+Rec U8,Samuel,Christianson,M,8/15/2017,1237 Lawrence street NE,Washington ,DC,20017,,,"1237 Lawrence street NE, Washington , DC 20017",38.931388,-76.9922181
+Rec U8,Theodore,Christianson,M,8/15/2017,1237 Lawrence street NE,Washington ,DC,20017,,,"1237 Lawrence street NE, Washington , DC 20017",38.931388,-76.9922181
+Rec U8,Leela,Afkhami,F,8/15/2017,2208 Kalorama Rd NW,Washington,DC,20008,,,"2208 Kalorama Rd NW, Washington, DC 20008",38.917637,-77.0530054
+Rec U8,Evelyn,Allen,F,8/15/2017,4044 Fessenden St NW,Washington,DC,20016,,,"4044 Fessenden St NW, Washington, DC 20016",38.9544898,-77.0822477
+Rec U8,Charlie,Nulanz,M,8/16/2017,2748 WOODLEY PL NW,WASHINGTON,DC,20008,,,"2748 WOODLEY PL NW, WASHINGTON, DC 20008",38.926802,-77.054999
+Rec U8,Kendal,Baker,M,8/17/2017,,Washington,DC,20002,,,"nan, Washington, DC 20002",38.899029,-77.1288614
+Rec U8,Alice,Knauf-Jordan,F,8/17/2017,4330 Reno Rd NW ,Washington,DC,20008,,,"4330 Reno Rd NW , Washington, DC 20008",38.9458184,-77.0741669
+Rec U8,Logan,Wagner,M,8/18/2017,1062 orange ave,Sharon Hill,PA,19079,,,"1062 orange ave, Sharon Hill, PA 19079",39.9008366,-75.2701254
+Rec U8,Zeke,Glickstein,M,8/19/2017,"3306 9th Street NE, Apt 1",Washington,DC,20017,,,"3306 9th Street NE, Apt 1, Washington, DC 20017",38.9304948,-76.9962811
+Rec U8,Eleanor,Chapin,F,8/21/2017,2840 Chesapeake St NW,Washington,DC,20008,,,"2840 Chesapeake St NW, Washington, DC 20008",38.9502508,-77.0594737
+Rec U8,MATEO,LANDI,M,8/22/2017,,washington,DC,20018,,,"nan, washington, DC 20018",38.898956,-77.0670592
+Rec U8,Ebba,Tingquist,F,8/22/2017,1909 Park Road NW,Washington ,DC,20010,,,"1909 Park Road NW, Washington , DC 20010",38.9331501,-77.0471365
+Rec U8,Elise,Hoch,F,8/23/2017,3030 Chestnut St. NW,Washington ,DC,20015,,,"3030 Chestnut St. NW, Washington , DC 20015",38.9796015,-77.0561475
+Rec U8,Charlie,Alexandre,F,8/23/2017,5022 Newport Ave,Bethesda,MD,20816,,,"5022 Newport Ave, Bethesda, MD 20816",38.9566426,-77.1025985
+Rec U8,August,Fenston,M,8/24/2017,3427 Oakwood Terrace NW,Washington,DC,20010,,,"3427 Oakwood Terrace NW, Washington, DC 20010",38.9349089,-77.0407106
+Rec U8,Ruby,Katragadda,F,8/24/2017,1508 5th Street NW,Washington,DC,20001,,,"1508 5th Street NW, Washington, DC 20001",38.910077,-77.0217332
+Rec U8,Jackson,Thomas,M,8/25/2017,7835 Orchid Street NW ,Washington,DC,20012,,,"7835 Orchid Street NW , Washington, DC 20012",38.9870434,-77.0420261
+Rec U8,Julia,Perry,F,8/25/2017,4617 36th Street Northwest,Washington,DC,20008,,,"4617 36th Street Northwest, Washington, DC 20008",38.9501022,-77.0721734
+Rec U8,Estela,Ayora,F,8/26/2017,1395 Sheridan St NW,Washington,DC,20011,,,"1395 Sheridan St NW, Washington, DC 20011",38.9663412,-77.035693
+Rec U8,Adma,Delgadillo-Nutting,F,8/27/2017,1816 Michigan Ave NE,Washington,DC,20018,,,"1816 Michigan Ave NE, Washington, DC 20018",38.9445254,-76.9823599
+Rec U8,Lilah,Yager,F,8/28/2017,3426 Macomb St NW,washington,DC,20016,,,"3426 Macomb St NW, washington, DC 20016",38.9332964,-77.0701292
+Rec U8,Mila,Verbel,F,8/28/2017,3001 Cleveland Ave NW,Washington,DC,20008,,,"3001 Cleveland Ave NW, Washington, DC 20008",38.9246139,-77.0617336
+Rec U8,Adam,Hawkesworth,M,8/29/2017,2036 17th Street Northwest,Washington,DC,20009,,,"2036 17th Street Northwest, Washington, DC 20009",38.9178992,-77.0413688
+Rec U8,Martélise,Pennington,F,8/31/2017,1828 Varnum Street Northeast,Washington,DC,20018,,,"1828 Varnum Street Northeast, Washington, DC 20018",38.9430785,-76.98162
+Rec U8,Sonia,Norton-Cole,F,8/31/2017,3620 Veazey St NW,Washington,DC,20008,,,"3620 Veazey St NW, Washington, DC 20008",38.9438306,-77.0733894
+Rec U8,Daniel,Barbosa,M,9/1/2017,1617 33rd st nw,Washington,DC,20007,,,"1617 33rd st nw, Washington, DC 20007",38.9111797,-77.0685215
+Rec U8,Siena,Frias,F,9/1/2017,919 4th Street SE,Washington DC,DC,20003,,,"919 4th Street SE, Washington DC, DC 20003",38.8788044,-77.0033038
+Rec U8,Maria,Foster,F,9/5/2017,741 Varnum Street NW,Washington,DC,20011,,,"741 Varnum Street NW, Washington, DC 20011",38.9432113,-77.0253699
+Rec U8,Ella,Katz,F,9/6/2017,2800 Ellicott,Washington ,DC,20008,,,"2800 Ellicott, Washington , DC 20008",38.9535047,-77.0603777
+Rec U8,Asher,Goldstein,M,9/7/2017,204 9th St. NE,Washington,DC,20002,,,"204 9th St. NE, Washington, DC 20002",38.889849,-76.9963351
+Rec U8,Julia,Peratsakis,F,9/7/2017,4610 Ellicott St NW,Washington,DC,20016,,,"4610 Ellicott St NW, Washington, DC 20016",38.9531274,-77.0938287
+Rec U8,Evelyn,Morgan,F,9/8/2017,1343 Randolph St NW,Washington,DC,20011,,,"1343 Randolph St NW, Washington, DC 20011",38.9388955,-77.0343896
+Rec U8,Nathaniel,Hale,M,9/9/2017,1610 Marion St Nw,Washington,DC,20001,,,"1610 Marion St Nw, Washington, DC 20001",38.9115225,-77.0236974
+Rec U8,Reese,Miller,F,9/9/2017,3722 22nd st ne,washington,DC,20018,,,"3722 22nd st ne, washington, DC 20018",38.9360136,-76.9769781
+Rec U8,Quinn,Hawkins,M,9/10/2017,4928 30th St. NW ,Washington ,DC,20008,,,"4928 30th St. NW , Washington , DC 20008",38.9544022,-77.0638986
+Rec U8,Vivienne,Bailey,F,9/11/2017,2306 North Capitol St NW,Washington,DC,20002,,,"2306 North Capitol St NW, Washington, DC 20002",38.920688,-77.0119455
+Rec U8,Henry,Helman,M,9/13/2017,4418 Springdale Street NW,Washington,DC,20016,,,"4418 Springdale Street NW, Washington, DC 20016",38.9404683,-77.0889351
+Rec U8,Peter,Waterman,M,9/13/2017,"1673 Columbia Rd. NW, Apt. 409",Washington,DC,20009,,,"1673 Columbia Rd. NW, Apt. 409, Washington, DC 20009",38.9254273,-77.041594
+Rec U8,Zoey,Montero,F,9/13/2017,2312 40th St NW Unit 4,Washington ,DC,20007,,,"2312 40th St NW Unit 4, Washington , DC 20007",38.9211999,-77.0816033
+Rec U8,Thierry,Castillo Hennessy,M,9/15/2017,1210 Taylor Street NW,Washington,DC,20011,,,"1210 Taylor Street NW, Washington, DC 20011",38.9406798,-77.0301112
+Rec U8,Henry,Wiese,M,9/15/2017,2916 Stephenson Pl NW,Washington,DC,20015,,,"2916 Stephenson Pl NW, Washington, DC 20015",38.9708707,-77.0623153
+Rec U8,Oliver,Miranda Wanner,M,9/17/2017,3739 Benton St NW,Washington ,DC,20007,,,"3739 Benton St NW, Washington , DC 20007",38.9208637,-77.0777385
+Rec U8,Delano,Hedin,M,9/17/2017,6420 2nd Pl NW,Washington,DC,20012,,,"6420 2nd Pl NW, Washington, DC 20012",38.9679946,-77.0178351
+Rec U8,Aurora,Jessup,F,9/17/2017,2712 27th Street NW,Washington,DC,20008,,,"2712 27th Street NW, Washington, DC 20008",38.926451,-77.0582005
+Rec U8,Clara,Golub Valvardi,F,9/19/2017,6123 3rd St NW,Washington,DC,20011,,,"6123 3rd St NW, Washington, DC 20011",38.9646689,-77.018515
+Rec U8,Benjamin,Roseman,M,9/20/2017,4200 Cathedral Ave. NW #1114,Washington,DC,20016,,,"4200 Cathedral Ave. NW #1114, Washington, DC 20016",38.9299092,-77.0856318
+Rec U8,Jack,Gamber,M,9/21/2017,2403 20th St. NW #107,Washington,DC,20009,,,"2403 20th St. NW #107, Washington, DC 20009",38.9208009,-77.0491765
+Rec U8,Wink,Wenstrup,F,9/22/2017,7250 15th Street NW,Washington,DC,20012,,,"7250 15th Street NW, Washington, DC 20012",38.978062,-77.0379684
+Rec U8,Francis,Fileri Flagg,M,9/24/2017,921 French St NW,Washington,DC,20001,,,"921 French St NW, Washington, DC 20001",38.9135052,-77.027628
+Rec U8,Linden,Kanthack,M,9/24/2017,4610 5th St NW,Washington,DC,20011,,,"4610 5th St NW, Washington, DC 20011",38.9467496,-77.0222519
+Rec U8,Harrison,Santiago,M,9/25/2017,"1610 Belmont St NW, Unit C",Washington,DC,20009,,,"1610 Belmont St NW, Unit C, Washington, DC 20009",38.9196586,-77.0403392
+Rec U8,Carter,Haft,M,9/25/2017,2623 3rd ST NE,Washington,DC,20002,,,"2623 3rd ST NE, Washington, DC 20002",38.9240946,-77.0043535
+Rec U8,Emma,Lrhazi,F,9/27/2017,1534 Gallatin PL NE,Washington,DC,20017,,,"1534 Gallatin PL NE, Washington, DC 20017",38.9498434,-76.9862182
+Rec U8,Thomas,Selamaj,M,9/28/2017,4343 Harrison Street NW,Washington,DC,20015,,,"4343 Harrison Street NW, Washington, DC 20015",38.9572195,-77.0883111
+Rec U8,Camila,Rodriguez,F,9/29/2017,1828 Kenyon St NW,Washington,DC,20010,,,"1828 Kenyon St NW, Washington, DC 20010",38.9295048,-77.0450705
+Rec U8,Ella,Perlin,F,9/29/2017,3940 McKinley Street NW,Washington,DC,20015,,,"3940 McKinley Street NW, Washington, DC 20015",38.9646779,-77.0824499
+Rec U8,Rae,Weiss-Wallace,F,9/29/2017,2812 29th Place NW,WASHINGTON,DC,20008,,,"2812 29th Place NW, WASHINGTON, DC 20008",38.9245849,-77.0615137
+Rec U8,Diego,Grim-Garcia,M,9/30/2017,217 Underwood St NW,Washington ,DC,20012,,,"217 Underwood St NW, Washington , DC 20012",38.9689032,-77.0178538
+Rec U8,Harriet,Mount,F,9/30/2017,2012 Monroe St. NE,Washington,DC,20018,,,"2012 Monroe St. NE, Washington, DC 20018",38.9333326,-76.977996
+Rec U8,Simone,Burk,F,2/2/2019,1422 Buchanan St NW,Washington ,DC,20011,,,"1422 Buchanan St NW, Washington , DC 20011",38.9459508,-77.0364988
+Rec U8,Elizabeth,Fisher,F,1/20/2020,1540 T St NW,Washington,DC,20009,,,"1540 T St NW, Washington, DC 20009",38.9154424,-77.0386129
+Rec U8,Rose,Kershaw,F,8/13/2020,3554 Albemarle Street NW,Washington ,DC,20008,,,"3554 Albemarle Street NW, Washington , DC 20008",38.9476596,-77.0717705
+Rec U8,Olivia,Forcha,F,10/21/2021,1533 3rd Street NW ,Washington ,DC,20001,,,"1533 3rd Street NW , Washington , DC 20001",38.9105684,-77.0174586
+Rec U8,Benjamin,Harpster,M,9/1/2017,"4603 Blagden Terrace, NW",Washington,DC,20011,,,"4603 Blagden Terrace, NW, Washington, DC 20011",38.9464004,-77.0451634
+Rec U8,Malcolm,Ham,M,10/28/2017,3160 Cherry Rd. NE,Washington,DC,20018,,,"3160 Cherry Rd. NE, Washington, DC 20018",38.9273271,-76.9637402
+Rec U8,Gabriel,Sriqui,M,3/10/2017,5332 Sherier Pl. NW,WASHINGTON,DC,20016,,,"5332 Sherier Pl. NW, WASHINGTON, DC 20016",38.9279027,-77.1089782
+PTA,Benjamin,Curry-Drikas,M,7/21/2017,4705 48th Street NW,Washington,DC,20016,,,"4705 48th Street NW, Washington, DC 20016",38.9513442,-77.0966456
+PTA,Sebastian,Silverman,M,5/10/2017,1625 Upshur St NW,Washington,DC,20011,,,"1625 Upshur St NW, Washington, DC 20011",38.9421002,-77.0407224
+PTA,Marshall,Ashley,M,3/18/2017,2914 Upton St NW,Washington,DC,20008,,,"2914 Upton St NW, Washington, DC 20008",38.9418715,-77.062037
+PTA,Noah,Berman,M,5/13/2017,4204 38th Street NW,Washington,DC,20016,,,"4204 38th Street NW, Washington, DC 20016",38.9435535,-77.0774108
+PTA,Elliot,Neumann,M,3/2/2017,4318 36TH ST NW,WASHINGTON,DC,20008,,,"4318 36TH ST NW, WASHINGTON, DC 20008",38.9455297,-77.0726908
+PTA,Jacob,Heslin,M,4/21/2017,4330 37th St NW,Washington,DC,20008,,,"4330 37th St NW, Washington, DC 20008",38.9461014,-77.0752405
+PTA,Kasra,Sadeghi,M,4/11/2017,2851 Chesterfield Pl. NW,Washington,DC,20008,,,"2851 Chesterfield Pl. NW, Washington, DC 20008",38.9513455,-77.0602851
+PTA,Alessandro,Zucchini,M,6/12/2017,4357 Embassy Park Dr NW,Washington,DC,20016,,,"4357 Embassy Park Dr NW, Washington, DC 20016",38.9342582,-77.0879188
+PTA,Kiran,Pielemeier,M,1/18/2017,"3500 rittenhouse st., nw",washington,DC,20015,,,"3500 rittenhouse st., nw, washington, DC 20015",38.9693708,-77.0728614
+PTA,Cole,Zelin,M,4/14/2017,6634 Barnaby Street NW,Washington,DC,20015,,,"6634 Barnaby Street NW, Washington, DC 20015",38.9771061,-77.0635342
+PTA,Luke,Casscells,M,10/25/2017,5014 Klingle St Nw,Washington,DC,20016,,,"5014 Klingle St Nw, Washington, DC 20016",38.9312923,-77.1034533
+PTA,Thomas,Hailey,M,3/20/2017,4630 Chesapeake Street NW,Washington,DC,20016,,,"4630 Chesapeake Street NW, Washington, DC 20016",38.9508803,-77.0944143
+PTA,Henry,Helman,M,9/13/2017,4418 Springdale Street NW,Washington,DC,20016,,,"4418 Springdale Street NW, Washington, DC 20016",38.9404683,-77.0889351
+PTA,Arlo,Perks,M,1/2/2017,3425 Ordway St Nw,Washington,DC,20016,,,"3425 Ordway St Nw, Washington, DC 20016",38.9364707,-77.0703941
+PTA,Will,Fetzer,M,3/17/2017,4005 Highwood Court NW,Washington,DC,20007,,,"4005 Highwood Court NW, Washington, DC 20007",38.9171331,-77.0786989
+PTA,Julian,Piscitelli,M,3/23/2017,3624 Warren St NW,Washington,DC,20008,,,"3624 Warren St NW, Washington, DC 20008",38.9445877,-77.0740515
+PTA,Roman,Flanigan,M,7/3/2017,1300 FAIRMONT ST NW,WASHINGTON,DC,20009,,,"1300 FAIRMONT ST NW, WASHINGTON, DC 20009",38.924528,-77.0324603
+PTA,Ronan,Kootman,M,2/4/2017,3342 Tennyson Street NW,Washington,DC,20015,,,"3342 Tennyson Street NW, Washington, DC 20015",38.9726629,-77.0708473
+PTA,Desmond,LeGeyt,M,10/14/2017,2235 49th Street NW,Washington,DC,20007,,,"2235 49th Street NW, Washington, DC 20007",38.9206179,-77.099034
+PTA,jack,podini,M,1/24/2017,3025 O Street NW,Washington,DC,20007,,,"3025 O Street NW, Washington, DC 20007",38.9086873,-77.0627622
+PTA,Ethan,Berger-Sabbatel,M,11/13/2017,"5415 Kansas Ave, NW",Washington,DC,20011,,,"5415 Kansas Ave, NW, Washington, DC 20011",38.9560277,-77.01774
+PTA,Gibreal,Madkour,M,8/2/2017,"2116 3rd St, NE Unit B",Washington,DC,20002,,,"2116 3rd St, NE Unit B, Washington, DC 20002",38.9187183,-77.0049309
+PTA,Richard,Antorcha,M,7/15/2017,1827 Florida Ave NW,Washington,DC,20009,,,"1827 Florida Ave NW, Washington, DC 20009",38.9163765,-77.0453954
+PTA,Kourosh,Anvar,M,4/2/2017,920 i St NW Apt 1102,Washington,DC,20001,,,"920 i St NW Apt 1102, Washington, DC 20001",38.9002256,-77.0276435
+PTA,Gabriel,Lohr,M,1/25/2017,4545 Connecticut AV NW Apt 807 ,Washington,DC,20008,,,"4545 Connecticut AV NW Apt 807 , Washington, DC 20008",38.9492336,-77.0684638
+PTA,Teo,Kiess,M,9/28/2017,4709Colorado Ave NW,Washington,DC,20011,,,"4709Colorado Ave NW, Washington, DC 20011",38.9485316,-77.0433585
+PTA,Thierry,Castillo Hennessy,M,9/15/2017,1210 Taylor Street NW,Washington,DC,20011,,,"1210 Taylor Street NW, Washington, DC 20011",38.9406798,-77.0301112
+PTA,Carlo,Di Benedetta,M,10/10/2017,1853 Newton Street Northwest,Washington,DC,20010,,,"1853 Newton Street Northwest, Washington, DC 20010",38.934386,-77.0454953
+PTA,Reyth,Hamdan,M,10/5/2017,2203 42ND ST NW #100,Washington,DC,20007,,,"2203 42ND ST NW #100, Washington, DC 20007",38.9203056,-77.0842316
+PTA,Kai,Morrison,M,12/18/2017,4500 17th St NW,Washington,DC,20011,,,"4500 17th St NW, Washington, DC 20011",38.945286,-77.0417278
+PTA,Henry,Lord,M,6/7/2017,5305 29th Street NW,Washington,DC,20015,,,"5305 29th Street NW, Washington, DC 20015",38.9588206,-77.0609966
+PTA,Elliot,Sacks,M,6/26/2017,5314 Chevy Chase Pkwy NW,Washington,DC,20015,,,"5314 Chevy Chase Pkwy NW, Washington, DC 20015",38.9595355,-77.0728507
+PTA,Zafar,Qureshi,M,4/13/2017,5238 Nebraska Avenue,Washington,DC,20015,,,"5238 Nebraska Avenue, Washington, DC 20015",38.9586929,-77.071074
+PTA,Miles,Redding,M,2/5/2017,4418 46th st nw,Washington ,DC,20016,,,"4418 46th st nw, Washington , DC 20016",38.9473924,-77.0934762
+PTA,Brendan,Malcarney,M,6/13/2017,4706 49th St NW,Washington,DC,20016,,,"4706 49th St NW, Washington, DC 20016",38.9513569,-77.0996419
+PTA,Jack,Koman,M,10/5/2017,1600 Upshur St. NW,Washington,DC,20011,,,"1600 Upshur St. NW, Washington, DC 20011",38.9416922,-77.0393735
+PTA,Mateo,Marquez,M,1/12/2017,4709 Warren St NW,Washington,DC,20016,,,"4709 Warren St NW, Washington, DC 20016",38.9450618,-77.0962975
+PTA,Romin,Otokwala,M,11/7/2017,4330 Chesapeake Street NW,Washington ,DC,20016,,,"4330 Chesapeake Street NW, Washington , DC 20016",38.9508401,-77.0880036
+PTA,Wilde,Baxter,M,1/9/2017,"1522 Holbrook Terrace NE, Unit 2",Washington,DC,20002,,,"1522 Holbrook Terrace NE, Unit 2, Washington, DC 20002",38.9050259,-76.9851352
+PTA,Alex,Daigle,M,7/19/2017,4218 47th St NW ,Washington ,DC,20016,,,"4218 47th St NW , Washington , DC 20016",38.9437879,-77.095529
+PTA,Sean,Bunker,M,5/2/2017,4340 Davenport Street Northwest,Washington,DC,20016,,,"4340 Davenport Street Northwest, Washington, DC 20016",38.9519526,-77.0883606
+PTA,Nariman,Sabahi,M,7/7/2017,3237 Ellicott St NW,Washington,DC,20008,,,"3237 Ellicott St NW, Washington, DC 20008",38.9541683,-77.0696555
+PTA,Lukas,Fogle,M,5/28/2017,4700 Crescent Street,Bethesda,MD,20816,,,"4700 Crescent Street, Bethesda, MD 20816",38.9523331,-77.1010297
+PTA,Owen,Tudela DeBo,M,10/19/2017,2727 29th st nw #429,Washington,DC,20008,,,"2727 29th st nw #429, Washington, DC 20008",38.9242254,-77.0594381
+PTA,Quinn,Hawkins,M,9/10/2017,4928 30th St. NW ,Washington ,DC,20008,,,"4928 30th St. NW , Washington , DC 20008",38.9544022,-77.0638986
+PTA,Theo,Johnson,M,9/18/2017,3719 R St NW,Washington,DC,20007,,,"3719 R St NW, Washington, DC 20007",38.9138043,-77.0760874
+PTA,Renzo,Desilvio,M,1/5/2017,5704 Overlea Rd,Bethesda,MD,20816,,,"5704 Overlea Rd, Bethesda, MD 20816",38.9567048,-77.117662
+PTA,Camila,Williams,F,6/6/2017,3760 Benton St.,Washington,DC,20007,,,"3760 Benton St., Washington, DC 20007",38.920442,-77.0783052
+PTA,Jane,Duchinsky,F,4/3/2017,912 Hamilton St NW,Washington,DC,20011,,,"912 Hamilton St NW, Washington, DC 20011",38.9537564,-77.0305836
+PTA,Nora,Savage-Snyder,F,3/15/2017,"2947 Arizona Ave, NW",Washington,DC,20016,,,"2947 Arizona Ave, NW, Washington, DC 20016",38.9298275,-77.1024257
+PTA,Marley,Godoy,F,2/6/2017,3650 Fordham Rd NW,Washington,DC,20016,,,"3650 Fordham Rd NW, Washington, DC 20016",38.9377408,-77.1031544
+PTA,Reed,Sterchi,F,3/18/2017,1315 31st Street NW,Washington,DC,20007,,,"1315 31st Street NW, Washington, DC 20007",38.9074877,-77.063558
+PTA,Josephine,Singer,F,10/22/2017,4947 Eskridge Ter NW,Washington,DC,20016,,,"4947 Eskridge Ter NW, Washington, DC 20016",38.9273249,-77.1025337
+PTA,Phoebe,Kim,F,4/14/2017,3005 32nd Street NW,Washington,DC,20008,,,"3005 32nd Street NW, Washington, DC 20008",38.9294394,-77.0656097
+PTA,Sonja,Smith,F,9/4/2017,3520 S St NW,Washington,DC,20007,,,"3520 S St NW, Washington, DC 20007",38.9143383,-77.0727921
+PTA,Margot,De Laperouse,F,5/30/2017,5202 Roosevelt Street,Bethesda,MD,20814,,,"5202 Roosevelt Street, Bethesda, MD 20814",38.9958305,-77.1080746
+PTA,Julian,Seidel,M,9/16/2017,3805 Warren St. NW,Washington ,DC,20016,,,"3805 Warren St. NW, Washington , DC 20016",38.945,-77.077624
+PTA,Xavier,Hammer,M,6/19/2017,3632 Reservoir Road NW,Washington,DC,20007,,,"3632 Reservoir Road NW, Washington, DC 20007",38.91244,-77.0745565
+PTA,Tomas,Villamar,M,1/30/2017,2727 29th St NW #332,Washington,DC,20008,,,"2727 29th St NW #332, Washington, DC 20008",38.9242254,-77.0594381
+PTA,Nazar,Kachan,M,7/21/2017,3350 M St NW ,Washington ,DC,20007,,,"3350 M St NW , Washington , DC 20007",38.9047288,-77.0701258
+PTA,Alessandra,Oracki,F,11/1/2017,4739 Berkeley Ter NW,Washington,DC,20007,,,"4739 Berkeley Ter NW, Washington, DC 20007",38.918409,-77.0951023
+PTA,Noah,Guzman,M,6/8/2017,2215 Lawrence St NE ,Washington ,DC,20018,,,"2215 Lawrence St NE , Washington , DC 20018",38.9319502,-76.9757696
+PTA,Quinn,McDonald,M,2/13/2017,3503 10th St NE,Washington,DC,20017,,,"3503 10th St NE, Washington, DC 20017",38.9327145,-76.9949675
+PTA,Maximilien,Leger,M,2/3/2017,2011 Varnum St NE,Washington,DC,20018,,,"2011 Varnum St NE, Washington, DC 20018",38.9427258,-76.9780765
+PTA,Elias,Makris,M,11/4/2017,4312 13th Pl Ne,WASHINGTON,DC,20017,,,"4312 13th Pl Ne, WASHINGTON, DC 20017",38.9424176,-76.9901394
+PTA,Marcus,Dunston,M,7/29/2017,2915 17th ST NE,Washington,DC,20018,,,"2915 17th ST NE, Washington, DC 20018",38.9279771,-76.9831224
+PTA,Abuchi,Ahaghotu,M,7/15/2017,4708 6th Place NE,Washington,DC,20017,,,"4708 6th Place NE, Washington, DC 20017",38.9470385,-77.0011411
+PTA,Elon,Nushi,M,7/11/2017,4115 3rd Street NW,Washington ,DC,20011,,,"4115 3rd Street NW, Washington , DC 20011",38.941647,-77.017697
+PTA,Mason,Varela,M,8/18/2017,343 Quintana Pl NE,Washington,DC,20011,,,"343 Quintana Pl NE, Washington, DC 20011",38.964232,-77.00382
+PTA,Miles,Hechter,M,5/26/2017,1602 Allison St NW,Washington,DC,20011,,,"1602 Allison St NW, Washington, DC 20011",38.9448431,-77.0397881
+PTA,August,Fenston,M,8/24/2017,3427 Oakwood Terrace NW,Washington,DC,20010,,,"3427 Oakwood Terrace NW, Washington, DC 20010",38.9349089,-77.0407106
+PTA,Gus,Bryan,M,7/2/2017,1813 Randolph St NE,Washington,DC,20018,,,"1813 Randolph St NE, Washington, DC 20018",38.9381099,-76.981886
+PTA,Reed,Hutchinson,M,9/23/2017,"1408 Varnum St, NW",Washington,DC,20011,,,"1408 Varnum St, NW, Washington, DC 20011",38.9427134,-77.0363301
+PTA,Joaquin,Otarola,M,10/19/2017,1 Missouri Ave NW,Washington,DC,20011,,,"1 Missouri Ave NW, Washington, DC 20011",38.9551187,-77.0119256
+PTA,Jonah,West,M,10/11/2017,438 Crittenden St NW,Washington,DC,20011,,,"438 Crittenden St NW, Washington, DC 20011",38.9472146,-77.0214751
+PTA,Ellie,Gallagher,F,4/6/2017,4410 W St NW,Washington ,DC,20007,,,"4410 W St NW, Washington , DC 20007",38.9189245,-77.0901637
+PTA,Ami,Khandeshi,F,8/27/2017,2728 Cortland Pl. NW,Washington,DC,20008,,,"2728 Cortland Pl. NW, Washington, DC 20008",38.9306871,-77.0597394
+PTA,Nelson,Boykin,M,9/29/2017,1013 Higgins Way ,Hyattsville,MD,20782,,,"1013 Higgins Way , Hyattsville, MD 20782",38.9576469,-76.993569
+PTA,Levi,Bloom,M,5/17/2017,"3001 15th St NE, Washington, DC, USA",Washington,DC,20017,,,"3001 15th St NE, Washington, DC, USA, Washington, DC 20017",38.9281713,-76.9864239
+PTA,Sawyer,O'Farrell,M,10/29/2017,1001 Jackson St NE,Washington,DC,20017,,,"1001 Jackson St NE, Washington, DC 20017",38.9293559,-76.9948477
+PTA,Pablo,Castillo,M,11/25/2017,1619 Webster St Nw,Washington,DC,20011,,,"1619 Webster St Nw, Washington, DC 20011",38.9441924,-77.040047
+PTA,Lincoln,Sisul,M,8/2/2017,1336 Varnum Street NE,Washington,DC,20017,,,"1336 Varnum Street NE, Washington, DC 20017",38.9430603,-76.9889869
+PTA,Jordan,Vas,M,7/3/2017,1238 Crittenden ST NW,Washington,DC,20011,,,"1238 Crittenden ST NW, Washington, DC 20011",38.9473005,-77.0503703
+PTA,Andy,Kisunko,M,3/19/2017,"1303 Hamlin St, NE",Washington,DC,20017,,,"1303 Hamlin St, NE, Washington, DC 20017",38.9275171,-76.9904853
+PTA,Lucas,Leon de la Barra Bernold,M,3/27/2017,3033 Chancellors Way NE,Washington,DC,20017,,,"3033 Chancellors Way NE, Washington, DC 20017",38.9281728,-77.0001833
+PTA,Owen,Hershey,M,5/9/2017,3274 Theodore R Hagans Dr NE,Washington,DC,20018,,,"3274 Theodore R Hagans Dr NE, Washington, DC 20018",38.9217308,-76.9618449
+PTA,James,Thompson,M,12/12/2017,208 Beacon Place NE,Washington ,DC,20011,,,"208 Beacon Place NE, Washington , DC 20011",38.9648572,-77.0071293
+PTA,Jona,Gee,M,10/12/2017,4211 56th Ave,Bladensburg,MD,20710,,,"4211 56th Ave, Bladensburg, MD 20710",38.9417327,-76.9234683
+PTA,Rafael,Munir,M,10/8/2017,925 H St NW ,Washington,DC,20001,,,"925 H St NW , Washington, DC 20001",38.8999815,-77.0269803
+PTA,Landon,Riley,M,4/7/2017,4715 Amberfield Dr,Upper Marlboro,MD,20772,,,"4715 Amberfield Dr, Upper Marlboro, MD 20772",38.8248689,-76.7666228
