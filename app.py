@@ -81,11 +81,20 @@ def get_numeric_sorted_options(column):
     """ Get sorted unique numeric options """
     return sorted(df_players[column].dropna().astype(int).unique())
 
+df_players["Race"] = df_players["Race"].astype(str).str.lower().str.strip()
+df_players["Race List"] = df_players["Race"].apply(lambda x: x.split(",") if pd.notnull(x) else [])
+
+def get_unique_race_options():
+    """ Get unique race options """
+    unique_races = set()
+    df_players["Race"].dropna().astype(str).str.lower().apply(lambda x: unique_races.update(x.split(", ")))
+    return sorted(unique_races)
+
 selected_programs = st.sidebar.multiselect("Select Program", get_lowercase_unique_options("Program"))
 selected_ages = st.sidebar.multiselect("Select Age", get_numeric_sorted_options("Age"))
 selected_gender = st.sidebar.selectbox("Select Gender", [""] + get_lowercase_unique_options("Gender"))
 selected_grade = st.sidebar.multiselect("Select Grade", get_lowercase_unique_options("Grade"))
-selected_race = st.sidebar.multiselect("Select Race", get_lowercase_unique_options("Race"))
+selected_race = st.sidebar.multiselect("Select Race", get_unique_race_options())
 selected_school = st.sidebar.multiselect("Select School", get_lowercase_unique_options("School"))
 
 # Field Filters
@@ -107,8 +116,13 @@ selected_lights = st.sidebar.selectbox("Select Lights", [""] + get_field_lowerca
 selected_permanent_lines = st.sidebar.multiselect("Select Permanent Lines", get_field_lowercase_options("Permanent Lines"))
 selected_goals = st.sidebar.selectbox("Select Goals", [""] + get_field_lowercase_options("Goals"))
 
+df_players["Grade"] = df_players["Grade"].astype(str).str.strip().str.lower()
+
 # Apply Player Filters
 filtered_players = df_players.copy()
+
+if selected_grade:
+    filtered_players = filtered_players[filtered_players["Grade"].isin([g.lower().strip() for g in selected_grade])]
 
 if any([selected_programs, selected_ages, selected_gender, selected_grade, selected_race, selected_school]):
     if selected_programs:
@@ -116,11 +130,11 @@ if any([selected_programs, selected_ages, selected_gender, selected_grade, selec
     if selected_ages:
         filtered_players = filtered_players[filtered_players["Age"].isin(selected_ages)]
     if selected_gender:
-        filtered_players = filtered_players[filtered_players["Gender"].str.lower() == selected_gender]
+        filtered_players = filtered_players[filtered_players["Gender"].str.lower().isin([selected_gender])]
     if selected_grade:
         filtered_players = filtered_players[filtered_players["Grade"].isin(selected_grade)]
     if selected_race:
-        filtered_players = filtered_players[filtered_players["Race"].str.lower().isin(selected_race)]
+        filtered_players = filtered_players[filtered_players["Race List"].apply(lambda races: any(race in races for race in selected_race))]
     if selected_school:
         filtered_players = filtered_players[filtered_players["School"].str.lower().isin(selected_school)]
 else:
