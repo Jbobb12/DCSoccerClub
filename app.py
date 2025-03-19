@@ -174,7 +174,7 @@ st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=5
 
 #DISTANCING
 st.header("Optimal Distance in Streamlit")
-selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
+#selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
 if st.button("Submit"):
     print(filtered_players)
     best_field, avg_dist = find_optimal_field_for_data(filtered_players, filtered_fields)
