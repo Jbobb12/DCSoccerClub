@@ -76,6 +76,7 @@ def find_optimal_field_for_data(players_df, fields_df):
         (best_field_name, avg_distance_for_that_field)
         If no players or fields exist, returns (None, None).
     """
+
     # If either dataframe is empty, return no result
     if players_df.empty or fields_df.empty:
         return None, None
