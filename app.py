@@ -4,6 +4,7 @@ import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from datetime import datetime
+from distance_mapping import find_optimal_field_for_data
 
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
@@ -15,6 +16,7 @@ df_pta_fall = pd.read_csv("./new_cleaned_PTA_fall.csv")
 df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
 df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
 df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
+
 
 # Standardize column names
 for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
@@ -169,14 +171,20 @@ st.header("Pin Map")
 st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
 
 
+
 #DISTANCING
 st.header("Optimal Distance in Streamlit")
 selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
 if st.button("Submit"):
-    st.write(f"You submitted: {selected_option}")
-    #st.write(f"The optimal field is: {answer}")
+    print(filtered_players)
+    best_field, avg_dist = find_optimal_field_for_data(filtered_players, filtered_fields)
+    if best_field is not None:
+        st.write(f"The optimal field is {best_field}, with average distance {avg_dist:.2f} miles.")
+    else:
+        st.write("No best field found (no players or no fields).")
 else:
     st.write("Please select an option and click Submit.")
+
 
 
 # def calculate_distances(players_df, fields_df):

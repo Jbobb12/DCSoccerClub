@@ -63,71 +63,75 @@ def group_and_print_optimal_fields(players_df, fields_df, group_col, label_prefi
         print(f"{label} optimal field is {best_field} "
               f"with avg distance of {avg_distances[best_field]:.2f}")
 
-# ----------------------------------------------------------------------
-# Main
-# ----------------------------------------------------------------------
-FIELDS_FILE = 'distance_mapping/new_cleaned_fields_data.csv'
-PROGRAM_FILES = [
-    'distance_mapping/new_cleaned_2017_Players_Data.csv', 
-    'distance_mapping/new_cleaned_PTA_fall.csv', 
-    'distance_mapping/new_cleaned_rec_fall24.csv', 
-    'distance_mapping/new_cleaned_travel_data_base.csv'
-]
 
-# Choose whether you want to group by birth_year or grade:
-GROUP_BY = "birth_year"  
-# or, for example:
-# GROUP_BY = "grade"
-
-# Read in fields data
-fields_df = pd.read_csv(FIELDS_FILE)
-fields_df['latitude'] = pd.to_numeric(fields_df['latitude'], errors='coerce')
-fields_df['longitude'] = pd.to_numeric(fields_df['longitude'], errors='coerce')
-
-for file_path in PROGRAM_FILES:
-    print("\n" + "-"*60)
-    print(f"Processing file: {file_path}")
-    players_df = pd.read_csv(file_path)
+#
+# NEW FUNCTION: easily called from your Streamlit front end to get the best field
+#
+def find_optimal_field_for_data(players_df, fields_df):
+    """
+    Given already-filtered DataFrames of players and fields (with columns
+    'Latitude'/'Longitude'), compute the single best field (lowest average distance).
     
-    # Make sure lat/long are numeric
-    players_df['latitude'] = pd.to_numeric(players_df['latitude'], errors='coerce')
-    players_df['longitude'] = pd.to_numeric(players_df['longitude'], errors='coerce')
+    Returns:
+        (best_field_name, avg_distance_for_that_field)
+        If no players or fields exist, returns (None, None).
+    """
+
+    # If either dataframe is empty, return no result
+    if players_df.empty or fields_df.empty:
+        return None, None
     
-    # Check if there's a 'program' column
-    if 'program' in players_df.columns:
-        if GROUP_BY == "birth_year":
-            print("Based on birth year *with* program:")
-        else:
-            print("Based on grade *with* program:")
+    # Copy so as not to mutate original
+    p_df = players_df.copy()
+    f_df = fields_df.copy()
+    
+    # Rename columns so the distance logic works
+    # (calculate_distances expects 'latitude' and 'longitude')
+    p_df.rename(columns={"Latitude": "latitude", "Longitude": "longitude"}, inplace=True)
+    f_df.rename(columns={"Latitude": "latitude", "Longitude": "longitude"}, inplace=True)
+    
+    # Drop any rows missing lat/long
+    p_df.dropna(subset=["latitude","longitude"], inplace=True)
+    f_df.dropna(subset=["latitude","longitude"], inplace=True)
+    
+    # If still empty after dropping NAs
+    if p_df.empty or f_df.empty:
+        return None, None
+    
+    distances = calculate_distances(p_df, f_df)
+    avg_distances, best_field = find_optimal_field(distances)
+    return best_field, avg_distances[best_field]
 
-        # 1) Group by the program
-        for prog_val, prog_df in players_df.groupby('program'):
-            if len(prog_df) == 0:
-                continue
-            distances = calculate_distances(prog_df, fields_df)
-            avg_distances, best_field = find_optimal_field(distances)
-            print(f"{prog_val} optimal field is {best_field} "
-                  f"with avg distance of {avg_distances[best_field]:.2f}")
+'''
+# ------------------------------------------------------------------------------
+# (Optional) COMMENT OUT OR KEEP FOR LOCAL TESTING:
+# ------------------------------------------------------------------------------
+if __name__ == "__main__":
+    # Example usage / local test with existing files:
 
-        # 2) Then group everyone by birth_year or grade (whichever is GROUP_BY)
-        if GROUP_BY == "birth_year":
-            group_and_print_optimal_fields(players_df, fields_df, 
-                                           group_col='birth_year', 
-                                           label_prefix='birth year')
+    FIELDS_FILE = 'distance_mapping/new_cleaned_fields_data.csv'
+    PROGRAM_FILES = [
+        'distance_mapping/new_cleaned_2017_Players_Data.csv', 
+        'distance_mapping/new_cleaned_PTA_fall.csv', 
+        'distance_mapping/new_cleaned_rec_fall24.csv', 
+        'distance_mapping/new_cleaned_travel_data_base.csv'
+    ]
+
+    fields_df = pd.read_csv(FIELDS_FILE)
+    for file_path in PROGRAM_FILES:
+        print("\n" + "-"*60)
+        print(f"Processing file: {file_path}")
+        players_df = pd.read_csv(file_path)
+
+        # Just showing how you'd call the new function:
+        best_field, dist_val = find_optimal_field_for_data(players_df, fields_df)
+        if best_field:
+            print(f"Overall best field is '{best_field}' with avg dist of {dist_val:.2f} miles")
         else:
-            # GROUP_BY == 'grade'
-            group_and_print_optimal_fields(players_df, fields_df, 
-                                           group_col='grade',
-                                           label_prefix=None)
-    else:
-        # No 'program' column in this file
-        if GROUP_BY == "birth_year":
-            print("No program at all (group everyone based on birth year):")
-            group_and_print_optimal_fields(players_df, fields_df, 
-                                           group_col='birth_year', 
-                                           label_prefix='birth year')
-        else:
-            print("No program at all (group everyone based on grade):")
-            group_and_print_optimal_fields(players_df, fields_df, 
-                                           group_col='grade',
-                                           label_prefix=None)
+            print("No best field found (either no players or no fields).")
+
+    # You can also still use the older grouping approach below, if needed:
+    # GROUP_BY = "birth_year"
+    # group_and_print_optimal_fields(players_df, fields_df, group_col=GROUP_BY, label_prefix='birth year')
+'''
+
