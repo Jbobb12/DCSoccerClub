@@ -45,7 +45,8 @@ df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
 # Merge player datasets
 df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
 
-def create_heatmap(df):
+def create_heatmap(player_df, field_df):
+    df = pd.concat([player_df, field_df], ignore_index=True)
     map_obj = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
     heatmap_data = df[["Latitude", "Longitude"]].dropna().values.tolist()
     if heatmap_data:
@@ -53,7 +54,7 @@ def create_heatmap(df):
     return map_obj
 
 def create_pin_map(player_df, field_df):
-    map_obj = folium.Map(location=[38.95, -77.0369], zoom_start=12)
+    map_obj = folium.Map(location=[38.893858, -77.0971477], zoom_start=12)
     
     # Limit player markers to 500
     for _, row in player_df.head(500).iterrows():
@@ -165,7 +166,7 @@ else:
 
 # Display updated maps
 st.header("Heat Map")
-st_folium(create_heatmap(filtered_players), width=700, height=500)
+st_folium(create_heatmap(filtered_players, filtered_fields), width=700, height=500)
 
 st.header("Pin Map")
 st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
