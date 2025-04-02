@@ -9,6 +9,100 @@ from distance_mapping import find_optimal_field_for_data
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
 
+# Custom Styling
+st.markdown(
+    """
+    <style>
+        /* Apply dark blue background */
+        body {
+            background-color: #ffffff; /* Dark Blue */
+            color: white;
+        }
+
+        /* Sidebar styling */
+        [data-testid="stSidebar"] {
+            background-color: #0A1931; /* Dark Blue */
+        }
+
+        /* Primary button styling */
+        .stButton>button {
+            background-color: #D72638 !important; /* Red */
+            color: white !important;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+        }
+        
+
+        h1 {
+            margin-top: 20px !important;
+            padding-top: 20px !important;
+            color: black !important;
+        }
+        
+        /* Headers styling */
+        h1, h2, h3, h4 {
+            color: white;
+        }
+        
+        /* Change background of main content */
+        .block-container {
+            background-color: #ffffff !important; /* Dark Blue */
+            padding-top: 30px;
+            border-radius: 10px;
+        }
+
+        /* Change input text color */
+        .stTextInput>div>div>input {
+            color: black !important;
+        }
+
+        /* Sidebar text and filters */
+        [data-testid="stSidebar"] h2, 
+        [data-testid="stSidebar"] h3, 
+        [data-testid="stSidebar"] label {
+            color: white;
+        }
+
+        /* Make selection dropdowns match the theme */
+        .stSelectbox>div>div>select {
+            background-color: #D72638 !important; /* Red */
+            color: white !important;
+            border-radius: 5px;
+        }
+        
+        /* Change table style */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background-color: #D72638; /* Red */
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 8px;
+            color: black;
+        }
+
+        /* Heatmap and Map Styling */
+        .folium-map {
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+        
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add Logo to Sidebar
+st.sidebar.image("./DC_Soccer_Logo.png", use_container_width=True)
+
+
 # Load data
 df_fields = pd.read_csv("./new_cleaned_fields_data.csv")
 df_travel = pd.read_csv("./new_cleaned_travel_data_base.csv")
