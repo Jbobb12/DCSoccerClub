@@ -42,7 +42,7 @@ st.markdown(
         
         /* Headers styling */
         h1, h2, h3, h4 {
-            color: white;
+            color: black;
         }
         
         /* Change background of main content */
