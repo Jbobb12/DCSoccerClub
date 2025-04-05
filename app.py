@@ -6,15 +6,29 @@ from streamlit_folium import st_folium
 from datetime import datetime
 from distance_mapping import find_optimal_field_for_data
 
+# Allowed emails
+ALLOWED_EMAILS = ['an922@georgetown.edu', 'jb3179@georgetown.edu', 'crm199@georgetown.edu', 
+                  'gsl39@georgetown.edu', 'km1897@georgetown.edu', 'krv14@georgetown.edu']
+
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
 
 # Google OAuth
-# pip install Authlib
+# User needs to do "pip install Authlib" before running this code
 if not st.experimental_user.is_logged_in:
     if st.button("Login"):
         st.login("google")
+
+elif st.experimental_user.email not in ALLOWED_EMAILS:
+    st.write(f"Access denied: You are not authorized to view this page.")
+    
+    if st.button("Logout"):
+        st.logout()
 else:
+
+
+
+
     st.header(f"Hello, {st.experimental_user.name}!")
     st.image(st.experimental_user.picture)
 
