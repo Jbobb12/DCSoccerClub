@@ -5,10 +5,7 @@ from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from datetime import datetime
 from distance_mapping import find_optimal_field_for_data
-
-# Allowed emails
-ALLOWED_EMAILS = ['an922@georgetown.edu', 'jb3179@georgetown.edu', 'crm199@georgetown.edu', 
-                  'gsl39@georgetown.edu', 'km1897@georgetown.edu', 'krv14@georgetown.edu']
+from emails import ALLOWED_EMAILS
 
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
@@ -25,9 +22,6 @@ elif st.experimental_user.email not in ALLOWED_EMAILS:
     if st.button("Logout"):
         st.logout()
 else:
-
-
-
 
     st.header(f"Hello, {st.experimental_user.name}!")
     st.image(st.experimental_user.picture)
@@ -71,8 +65,8 @@ else:
     # Merge player datasets
     df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
 
-    def create_heatmap(player_df, field_df):
-        df = pd.concat([player_df, field_df], ignore_index=True)
+    def create_heatmap(df):
+        # df = pd.concat([player_df, field_df], ignore_index=True)
         map_obj = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
         heatmap_data = df[["Latitude", "Longitude"]].dropna().values.tolist()
         if heatmap_data:
@@ -192,7 +186,7 @@ else:
 
     # Display updated maps
     st.header("Heat Map")
-    st_folium(create_heatmap(filtered_players, filtered_fields), width=700, height=500)
+    st_folium(create_heatmap(filtered_players), width=700, height=500)
 
     st.header("Pin Map")
     st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
