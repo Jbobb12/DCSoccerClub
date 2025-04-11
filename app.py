@@ -5,6 +5,13 @@ from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from datetime import datetime
 from distance_mapping import find_optimal_field_for_data
+from supabase import create_client, Client
+import ast
+
+supabase_url = st.secrets["supabase"]["url"]
+supabase_key = st.secrets["supabase"]["api_key"]
+
+supabase: Client = create_client(supabase_url, supabase_key)
 
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
@@ -102,42 +109,28 @@ st.markdown(
 # Add Logo to Sidebar
 st.sidebar.image("./DC_Soccer_Logo.png", use_container_width=True)
 
+def fetch_data(table_name):
+    all_data = []
+    page_size = 1000
+    start = 0
 
-# Load data
-df_fields = pd.read_csv("./new_cleaned_fields_data.csv")
-df_travel = pd.read_csv("./new_cleaned_travel_data_base.csv")
-df_pta_fall = pd.read_csv("./new_cleaned_PTA_fall.csv")
-df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
-df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
-df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
+    while True:
+        response = supabase.table(table_name).select("*").range(start, start + page_size - 1).execute()
+        data = response.data
+
+        if not data:
+            break  # No more rows to fetch
+
+        all_data.extend(data)
+        start += page_size
+
+    return pd.DataFrame(all_data)
 
 
-# Standardize column names
-for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
-    df.rename(columns={"latitude": "Latitude", "longitude": "Longitude", "zip": "Zip Code"}, inplace=True)
+df_fields = fetch_data("Fields")
+df_players = fetch_data("Players")
 
-program_names = ["None", "Travel", "Pre-Travel Academy Fall", "2017 Players", "Rec Fall 2024", "Accelerated Development Program Fall"]
-dfs = [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]
 
-for df, program_name in zip(dfs, program_names):
-    df["Program"] = program_name
-
-# Calculate age
-today = datetime.today()
-def calculate_age(birth_date):
-    if pd.notnull(birth_date):
-        return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
-    return None
-
-for df in [df_travel, df_rec_fall_24, df_adp_fall]:
-    df["birth_date"] = pd.to_datetime(df["birth_date"], errors="coerce")
-    df["Age"] = df["birth_date"].apply(calculate_age)
-
-df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
-df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
-
-# Merge player datasets
-df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
 
 def create_heatmap(df):
     map_obj = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
@@ -169,6 +162,10 @@ def create_pin_map(player_df, field_df):
 # Sidebar filters
 st.sidebar.header("Player Filters")
 
+def get_unique_options(column):
+    """ Get sorted unique options """
+    return sorted(df_players[column].unique())
+
 def get_lowercase_unique_options(column):
     """ Get sorted unique lowercase options """
     return sorted(df_players[column].dropna().astype(str).str.lower().unique())
@@ -177,16 +174,19 @@ def get_numeric_sorted_options(column):
     """ Get sorted unique numeric options """
     return sorted(df_players[column].dropna().astype(int).unique())
 
-df_players["Race"] = df_players["Race"].astype(str).str.lower().str.strip()
-df_players["Race List"] = df_players["Race"].apply(lambda x: x.split(",") if pd.notnull(x) else [])
-
 def get_unique_race_options():
-    """ Get unique race options """
+    """ Get unique race options from Race List column """
     unique_races = set()
-    df_players["Race"].dropna().astype(str).str.lower().apply(lambda x: unique_races.update(x.split(", ")))
-    return sorted(unique_races)
 
-selected_programs = st.sidebar.multiselect("Select Program", get_lowercase_unique_options("Program"))
+    # Go through each race_list_str, convert to list, add to set
+    df_players["Race List"].dropna().apply(
+        lambda race_list_str: unique_races.update(ast.literal_eval(race_list_str))
+    )
+
+    return sorted(race.strip() for race in unique_races)  # Remove extra spaces just in case
+
+
+selected_programs = st.sidebar.multiselect("Select Program", get_unique_options("Program"))
 selected_ages = st.sidebar.multiselect("Select Age", get_numeric_sorted_options("Age"))
 selected_gender = st.sidebar.selectbox("Select Gender", [""] + get_lowercase_unique_options("Gender"))
 selected_grade = st.sidebar.multiselect("Select Grade", get_lowercase_unique_options("Grade"))
@@ -222,7 +222,7 @@ if selected_grade:
 
 if any([selected_programs, selected_ages, selected_gender, selected_grade, selected_race, selected_school]):
     if selected_programs:
-        filtered_players = filtered_players[filtered_players["Program"].str.lower().isin(selected_programs)]
+        filtered_players = filtered_players[filtered_players["Program"].isin(selected_programs)]
     if selected_ages:
         filtered_players = filtered_players[filtered_players["Age"].isin(selected_ages)]
     if selected_gender:
@@ -230,7 +230,13 @@ if any([selected_programs, selected_ages, selected_gender, selected_grade, selec
     if selected_grade:
         filtered_players = filtered_players[filtered_players["Grade"].isin(selected_grade)]
     if selected_race:
-        filtered_players = filtered_players[filtered_players["Race List"].apply(lambda races: any(race in races for race in selected_race))]
+        filtered_players = filtered_players[
+            filtered_players["Race List"].apply(
+                lambda race_list_str: any(
+                    race in ast.literal_eval(race_list_str) for race in selected_race
+                ) if pd.notnull(race_list_str) else False
+            )
+        ]
     if selected_school:
         filtered_players = filtered_players[filtered_players["School"].str.lower().isin(selected_school)]
 else:
@@ -279,42 +285,3 @@ if st.button("Submit"):
 else:
     st.write("Please select an option and click Submit.")
 
-
-
-# def calculate_distances(players_df, fields_df):
-#     distances = pd.DataFrame(index=players_df.index, columns=fields_df['Name'])
-
-#     for player_idx, player in players_df.iterrows():
-#         player_coords = (player['latitude'], player['longitude'])
-
-#         for field_idx, field in fields_df.iterrows():
-#             field_coords = (field['latitude'], field['longitude'])
-#             distances.at[player_idx, field['Name']] = distance(player_coords, field_coords).miles
-            
-#     return distances
-
-# def find_optimal_field(distance_df):
-#     avg_distances = distance_df.mean()
-#     return avg_distances, avg_distances.idxmin()
-
-# fields_df = pd.read_csv('distance_mapping/new_cleaned_fields_data.csv')
-
-# fields_df['latitude'] = pd.to_numeric(fields_df['latitude'])
-# fields_df['longitude'] = pd.to_numeric(fields_df['longitude'])
-
-# optimal_fields = {}
-
-# program_files = ['distance_mapping/new_cleaned_2017_Players_Data.csv', 'distance_mapping/new_cleaned_PTA_fall.csv', 'distance_mapping/new_cleaned_rec_fall24.csv', 'distance_mapping/new_cleaned_travel_data_base.csv']
-
-# for file in program_files:
-#     program_name = file.split('_')[3]
-#     players_df = pd.read_csv(file)
-
-#     players_df['latitude'] = pd.to_numeric(players_df['latitude'])
-#     players_df['longitude'] = pd.to_numeric(players_df['longitude'])
-    
-#     distances = calculate_distances(players_df, fields_df)
-#     avg_distances, optimal_field = find_optimal_field(distances)
-#     optimal_fields[program_name] = optimal_field
-#     #print optimal field and average distance for each file
-#     print(f'Optimal field for {program_name} is {optimal_field} with an average distance of {avg_distances[optimal_field]} miles')
