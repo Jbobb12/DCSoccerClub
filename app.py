@@ -5,42 +5,136 @@ from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from datetime import datetime
 from distance_mapping import find_optimal_field_for_data
-from emails import ALLOWED_EMAILS
+
+# Force light mode theme
+st.set_page_config(
+    page_title="DC Soccer Club Maps",
+    page_icon="⚽",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items=None
+)
+
 
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
 
-# Google OAuth
-# User needs to do "pip install Authlib" before running this code
-if not st.experimental_user.is_logged_in:
-    if st.button("Login"):
-        st.login("google")
+# Custom Styling
+st.markdown(
+    """
+    <style>
+        /* Apply dark blue background */
+        body {
+            background-color: #ffffff; /* Dark Blue */
+            color: white;
+        }
 
-elif st.experimental_user.email not in ALLOWED_EMAILS:
-    st.write(f"Access denied: You are not authorized to view this page.")
-    
-    if st.button("Logout"):
-        st.logout()
-else:
+        /* Sidebar styling */
+        [data-testid="stSidebar"] {
+            background-color: #0A1931; /* Dark Blue */
+        }
 
-    st.header(f"Hello, {st.experimental_user.name}!")
-    st.image(st.experimental_user.picture)
+        /* Primary button styling */
+        .stButton>button {
+            background-color: #D72638 !important; /* Red */
+            color: white !important;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+        }
+        
 
-    if st.button("Logout"):
-        st.logout()
+        h1 {
+            margin-top: 20px !important;
+            padding-top: 20px !important;
+            color: black !important;
+        }
+        
+        /* Headers styling */
+        h1, h2, h3, h4 {
+            color: black;
+        }
+        
+        /* Change background of main content */
+        .block-container {
+            background-color: #ffffff !important; /* Dark Blue */
+            padding-top: 30px;
+            border-radius: 10px;
+        }
 
-    # Load data
-    df_fields = pd.read_csv("./new_cleaned_fields_data.csv")
-    df_travel = pd.read_csv("./new_cleaned_travel_data_base.csv")
-    df_pta_fall = pd.read_csv("./new_cleaned_PTA_fall.csv")
-    df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
-    df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
-    df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
+        /* Change input text color */
+        .stTextInput>div>div>input {
+            color: black !important;
+        }
+
+        /* Sidebar text and filters */
+        [data-testid="stSidebar"] h2, 
+        [data-testid="stSidebar"] h3, 
+        [data-testid="stSidebar"] label {
+            color: white;
+        }
+
+        /* Make selection dropdowns match the theme */
+        .stSelectbox>div>div>select {
+            background-color: #D72638 !important; /* Red */
+            color: white !important;
+            border-radius: 5px;
+        }
+        
+        /* Change table style */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background-color: #D72638; /* Red */
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 8px;
+            color: black;
+        }
+
+        /* Heatmap and Map Styling */
+        .folium-map {
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+        
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add Logo to Sidebar
+st.sidebar.image("./DC_Soccer_Logo.png", use_container_width=True)
 
 
-    # Standardize column names
-    for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
-        df.rename(columns={"latitude": "Latitude", "longitude": "Longitude", "zip": "Zip Code"}, inplace=True)
+# Load data
+df_fields = pd.read_csv("./new_cleaned_fields_data.csv")
+df_travel = pd.read_csv("./new_cleaned_travel_data_base.csv")
+df_pta_fall = pd.read_csv("./new_cleaned_PTA_fall.csv")
+df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
+df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
+df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
+
+column_mapping = {
+    "latitude": "Latitude", 
+    "longitude": "Longitude", 
+    "zip": "Zip Code",
+    "gender": "Gender", 
+    "grade": "Grade",
+    "Race (Check all that apply)": "Race",
+    "School for the 2024-2025 School Year: School in Fall 2024": "School",
+    "School for the 2024-2025 School Year:": "School",
+    "program": "Program"
+}
+
+for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
+    df.rename(columns={k: v for k, v in column_mapping.items() if k in df.columns}, inplace=True)
 
     program_names = ["None", "Travel", "Pre-Travel Academy Fall", "2017 Players", "Rec Fall 2024", "Accelerated Development Program Fall"]
     dfs = [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]
@@ -59,8 +153,8 @@ else:
         df["birth_date"] = pd.to_datetime(df["birth_date"], errors="coerce")
         df["Age"] = df["birth_date"].apply(calculate_age)
 
-    df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
-    df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
+# df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
+# df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
 
     # Merge player datasets
     df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
