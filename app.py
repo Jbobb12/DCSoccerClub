@@ -134,7 +134,10 @@ for df in [df_travel, df_rec_fall_24, df_adp_fall]:
     df["Age"] = df["birth_date"].apply(calculate_age)
 
 df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
-df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
+df_adp_fall.rename(columns={"gender":"Gender", "grade": "Grade"}, inplace=True)
+df_travel.rename(columns={"gender":"Gender"}, inplace=True)
+df_players_2017.rename(columns={"gender":"Gender"}, inplace=True)
+df_pta_fall.rename(columns={"gender":"Gender"}, inplace=True)
 
 # Merge player datasets
 df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
@@ -142,7 +145,7 @@ df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fal
 def create_heatmap(df):
     map_obj = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
     heatmap_data = df[["Latitude", "Longitude"]].dropna().values.tolist()
-    if heatmap_data:
+    if heatmap_data: 
         HeatMap(heatmap_data).add_to(map_obj)
     return map_obj
 
