@@ -6,6 +6,16 @@ from streamlit_folium import st_folium
 from datetime import datetime
 from distance_mapping import find_optimal_field_for_data
 
+# Force light mode theme
+st.set_page_config(
+    page_title="DC Soccer Club Maps",
+    page_icon="⚽",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items=None
+)
+
+
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
 
@@ -111,10 +121,20 @@ df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
 df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
 df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
 
+column_mapping = {
+    "latitude": "Latitude", 
+    "longitude": "Longitude", 
+    "zip": "Zip Code",
+    "gender": "Gender", 
+    "grade": "Grade",
+    "Race (Check all that apply)": "Race",
+    "School for the 2024-2025 School Year: School in Fall 2024": "School",
+    "School for the 2024-2025 School Year:": "School",
+    "program": "Program"
+}
 
-# Standardize column names
 for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
-    df.rename(columns={"latitude": "Latitude", "longitude": "Longitude", "zip": "Zip Code"}, inplace=True)
+    df.rename(columns={k: v for k, v in column_mapping.items() if k in df.columns}, inplace=True)
 
 program_names = ["None", "Travel", "Pre-Travel Academy Fall", "2017 Players", "Rec Fall 2024", "Accelerated Development Program Fall"]
 dfs = [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]
@@ -133,8 +153,8 @@ for df in [df_travel, df_rec_fall_24, df_adp_fall]:
     df["birth_date"] = pd.to_datetime(df["birth_date"], errors="coerce")
     df["Age"] = df["birth_date"].apply(calculate_age)
 
-df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
-df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
+# df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
+# df_adp_fall.rename(columns={"grade": "Grade"}, inplace=True)
 
 # Merge player datasets
 df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
