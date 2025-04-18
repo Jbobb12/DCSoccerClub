@@ -53,6 +53,11 @@ elif st.experimental_user.email not in ALLOWED_EMAILS:
     if st.button("Logout"):
         st.logout()
 else:
+    st.header(f"Hello, {st.experimental_user.name}!")
+    st.image(st.experimental_user.picture)
+
+    if st.button("Logout"):
+        st.logout()
 
 # Custom Styling
 st.markdown(
