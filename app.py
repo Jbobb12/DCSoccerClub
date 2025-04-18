@@ -33,8 +33,8 @@ if "manage_program_names" not in st.session_state:
     st.session_state.manage_program_names = []
 
 
-Google OAuth
-User needs to do "pip install Authlib" before running this code
+#Google OAuth
+#User needs to do "pip install Authlib" before running this code
 if not st.experimental_user.is_logged_in:
     if st.button("Login"):
         st.login("google")
