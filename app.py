@@ -4,6 +4,7 @@ import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from datetime import datetime
+from clean_uploaded_csv import clean_uploaded_csv
 from distance_mapping import find_optimal_field_for_data
 from supabase import create_client, Client
 import ast
@@ -15,6 +16,82 @@ supabase: Client = create_client(supabase_url, supabase_key)
 
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
+
+with st.expander("Manage Data"):
+    manage_option = st.radio("What would you like to do?", ["Add", "Delete"])
+
+    # Clear confirmation if switching modes
+    # Initialize session state if not present
+    if "confirm_delete" not in st.session_state:
+        st.session_state.confirm_delete = False
+    if "selected_program" not in st.session_state:
+        st.session_state.selected_program = None
+
+    if manage_option == "Add":
+        # Reset delete state when switching to Add
+        st.session_state.confirm_delete = False
+        st.session_state.selected_program = None
+
+    if manage_option == "Delete":
+        st.markdown("### Delete Players by Program")
+
+        # Fetch unique programs from Supabase
+        all_players = []
+        start = 0
+        while True:
+            response = supabase.table("Players").select("Program").range(start, start + 999).execute()
+            if not response.data:
+                break
+            all_players.extend(response.data)
+            start += 1000
+
+        program_df = pd.DataFrame(all_players)
+        unique_programs = sorted(program_df["Program"].dropna().unique())
+
+        if not st.session_state.confirm_delete:
+            st.session_state.selected_program = st.selectbox("Select a program to delete:", unique_programs)
+            if st.button("Delete Selected Program"):
+                st.session_state.confirm_delete = True
+
+        elif st.session_state.confirm_delete:
+            st.warning("Are you sure you want to delete all players in this program? This action cannot be undone.")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                if st.button("Yes, Delete"):
+                    supabase.table("Players").delete().ilike("Program", st.session_state.selected_program).execute()
+                    st.success(f"Deleted all players in: {st.session_state.selected_program}")
+                    st.session_state.confirm_delete = False
+                    st.session_state.selected_program = None
+                    st.rerun()
+            with col2:
+                if st.button("Cancel"):
+                    st.session_state.confirm_delete = False
+                    st.session_state.selected_program = None
+                    st.rerun()
+
+
+
+                
+
+
+    elif manage_option == "Add":
+        st.markdown("### Add Players via CSV")
+        new_program = st.text_input("Enter the program name for this new data")
+        uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
+
+        if uploaded_file and new_program:
+            if st.button("Add to Supabase"):
+                try:
+                    df_new = pd.read_csv(uploaded_file)
+                    cleaned_df = clean_uploaded_csv(df_new, new_program)
+                    data = cleaned_df.to_dict(orient="records")
+                    for row in data:
+                        supabase.table("Players").insert(row).execute()
+                    st.success("Data successfully cleaned and added to Supabase!")
+                except Exception as e:
+                    st.error(f"Add failed: {str(e)}")
+
+
 
 # Custom Styling
 st.markdown(
@@ -42,8 +119,8 @@ st.markdown(
         
 
         h1 {
-            margin-top: 20px !important;
-            padding-top: 20px !important;
+            margin-top: 0px !important;
+            padding-top: 40px !important;
             color: black !important;
         }
         
