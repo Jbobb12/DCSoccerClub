@@ -36,28 +36,19 @@ if "manage_program_names" not in st.session_state:
 #Google OAuth
 #User needs to do "pip install Authlib" before running this code
 if not st.experimental_user.is_logged_in:
-    if st.button("Login"):
+    if st.button("Login", key="login_button"):
         st.login("google")
-
-if st.experimental_user is None:
     st.info("Please log in to access this app.")
     st.stop()
 
 if st.experimental_user.email not in ALLOWED_EMAILS:
     st.error("Access denied: You are not authorized to view this page.")
+    if st.button("Logout", key="logout_button_unauthorized"):
+        st.logout()
     st.stop()
 
-elif st.experimental_user.email not in ALLOWED_EMAILS:
-    st.write(f"Access denied: You are not authorized to view this page.")
-    
-    if st.button("Logout"):
-        st.logout()
-else:
-    st.header(f"Hello, {st.experimental_user.name}!")
-    st.image(st.experimental_user.picture)
+# Main Content for Authorized Users
 
-    if st.button("Logout"):
-        st.logout()
 
 # Custom Styling
 st.markdown(
