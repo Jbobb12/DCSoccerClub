@@ -4,60 +4,94 @@ import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from datetime import datetime
+from clean_uploaded_csv import clean_uploaded_csv
 from distance_mapping import find_optimal_field_for_data
-from emails import ALLOWED_EMAILS
+from supabase import create_client, Client
+import ast
 
-# Force light mode theme
-st.set_page_config(
-    page_title="DC Soccer Club Maps",
-    page_icon="⚽",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items=None
-)
+supabase_url = st.secrets["supabase"]["url"]
+supabase_key = st.secrets["supabase"]["api_key"]
 
-# Control for different views
-if "view" not in st.session_state:
-    st.session_state.view = "home"
+supabase: Client = create_client(supabase_url, supabase_key)
 
-if "is_adding_program" not in st.session_state:
-    st.session_state.is_adding_program = False
+# Title and header
+st.title("Welcome to DC Soccer Club Maps")
 
-if "is_deleting_program" not in st.session_state:
-    st.session_state.is_deleting_program = False
+with st.expander("Manage Data"):
+    manage_option = st.radio("What would you like to do?", ["Add", "Delete"])
 
-if "added_programs" not in st.session_state:
-    st.session_state.added_programs = []
+    # Clear confirmation if switching modes
+    # Initialize session state if not present
+    if "confirm_delete" not in st.session_state:
+        st.session_state.confirm_delete = False
+    if "selected_program" not in st.session_state:
+        st.session_state.selected_program = None
 
-if "manage_program_names" not in st.session_state:
-    st.session_state.manage_program_names = []
+    if manage_option == "Add":
+        # Reset delete state when switching to Add
+        st.session_state.confirm_delete = False
+        st.session_state.selected_program = None
+
+    if manage_option == "Delete":
+        st.markdown("### Delete Players by Program")
+
+        # Fetch unique programs from Supabase
+        all_players = []
+        start = 0
+        while True:
+            response = supabase.table("Players").select("Program").range(start, start + 999).execute()
+            if not response.data:
+                break
+            all_players.extend(response.data)
+            start += 1000
+
+        program_df = pd.DataFrame(all_players)
+        unique_programs = sorted(program_df["Program"].dropna().unique())
+
+        if not st.session_state.confirm_delete:
+            st.session_state.selected_program = st.selectbox("Select a program to delete:", unique_programs)
+            if st.button("Delete Selected Program"):
+                st.session_state.confirm_delete = True
+
+        elif st.session_state.confirm_delete:
+            st.warning("Are you sure you want to delete all players in this program? This action cannot be undone.")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                if st.button("Yes, Delete"):
+                    supabase.table("Players").delete().ilike("Program", st.session_state.selected_program).execute()
+                    st.success(f"Deleted all players in: {st.session_state.selected_program}")
+                    st.session_state.confirm_delete = False
+                    st.session_state.selected_program = None
+                    st.rerun()
+            with col2:
+                if st.button("Cancel"):
+                    st.session_state.confirm_delete = False
+                    st.session_state.selected_program = None
+                    st.rerun()
 
 
-#Google OAuth
-#User needs to do "pip install Authlib" before running this code
-if not st.experimental_user.is_logged_in:
-    if st.button("Login"):
-        st.login("google")
 
-if st.experimental_user is None:
-    st.info("Please log in to access this app.")
-    st.stop()
+                
 
-if st.experimental_user.email not in ALLOWED_EMAILS:
-    st.error("Access denied: You are not authorized to view this page.")
-    st.stop()
 
-elif st.experimental_user.email not in ALLOWED_EMAILS:
-    st.write(f"Access denied: You are not authorized to view this page.")
-    
-    if st.button("Logout"):
-        st.logout()
-else:
-    st.header(f"Hello, {st.experimental_user.name}!")
-    st.image(st.experimental_user.picture)
+    elif manage_option == "Add":
+        st.markdown("### Add Players via CSV")
+        new_program = st.text_input("Enter the program name for this new data")
+        uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
 
-    if st.button("Logout"):
-        st.logout()
+        if uploaded_file and new_program:
+            if st.button("Add to Supabase"):
+                try:
+                    df_new = pd.read_csv(uploaded_file)
+                    cleaned_df = clean_uploaded_csv(df_new, new_program)
+                    data = cleaned_df.to_dict(orient="records")
+                    for row in data:
+                        supabase.table("Players").insert(row).execute()
+                    st.success("Data successfully cleaned and added to Supabase!")
+                except Exception as e:
+                    st.error(f"Add failed: {str(e)}")
+
+
 
 # Custom Styling
 st.markdown(
@@ -85,8 +119,8 @@ st.markdown(
         
 
         h1 {
-            margin-top: 20px !important;
-            padding-top: 20px !important;
+            margin-top: 0px !important;
+            padding-top: 40px !important;
             color: black !important;
         }
         
@@ -152,65 +186,38 @@ st.markdown(
 # Add Logo to Sidebar
 st.sidebar.image("./DC_Soccer_Logo.png", use_container_width=True)
 
+def fetch_data(table_name):
+    all_data = []
+    page_size = 1000
+    start = 0
 
-# Load data
-df_fields = pd.read_csv("./new_cleaned_fields_data.csv")
-df_travel = pd.read_csv("./new_cleaned_travel_data_base.csv")
-df_pta_fall = pd.read_csv("./new_cleaned_PTA_fall.csv")
-df_players_2017 = pd.read_csv("./new_cleaned_2017_Players_Data.csv")
-df_rec_fall_24 = pd.read_csv("./new_cleaned_rec_fall24.csv")
-df_adp_fall = pd.read_csv("./cleaned_ADPFallData.csv")
+    while True:
+        response = supabase.table(table_name).select("*").range(start, start + page_size - 1).execute()
+        data = response.data
 
-column_mapping = {
-    "latitude": "Latitude", 
-    "longitude": "Longitude", 
-    "zip": "Zip Code",
-    "gender": "Gender", 
-    "grade": "Grade",
-    "Race (Check all that apply)": "Race",
-    "School for the 2024-2025 School Year: School in Fall 2024": "School",
-    "School for the 2024-2025 School Year:": "School",
-    "program": "Program"
-}
+        if not data:
+            break  # No more rows to fetch
 
-for df in [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]:
-    df.rename(columns={k: v for k, v in column_mapping.items() if k in df.columns}, inplace=True)
+        all_data.extend(data)
+        start += page_size
 
-program_names = ["None", "Travel", "Pre-Travel Academy Fall", "2017 Players", "Rec Fall 2024", "Accelerated Development Program Fall"]
-dfs = [df_fields, df_travel, df_pta_fall, df_players_2017, df_rec_fall_24, df_adp_fall]
+    return pd.DataFrame(all_data)
 
-for df, program_name in zip(dfs, program_names):
-    df["Program"] = program_name
 
-# Calculate age
-today = datetime.today()
-def calculate_age(birth_date):
-    if pd.notnull(birth_date):
-        return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
-    return None
+df_fields = fetch_data("Fields")
+df_players = fetch_data("Players")
 
-for df in [df_travel, df_rec_fall_24, df_adp_fall]:
-    df["birth_date"] = pd.to_datetime(df["birth_date"], errors="coerce")
-    df["Age"] = df["birth_date"].apply(calculate_age)
 
-df_rec_fall_24.rename(columns={"gender": "Gender", "grade": "Grade", "Race (Check all that apply)": "Race", "School for the 2024-2025 School Year: School in Fall 2024": "School"}, inplace=True)
-df_adp_fall.rename(columns={"gender":"Gender", "grade": "Grade"}, inplace=True)
-df_travel.rename(columns={"gender":"Gender"}, inplace=True)
-df_players_2017.rename(columns={"gender":"Gender"}, inplace=True)
-df_pta_fall.rename(columns={"gender":"Gender"}, inplace=True)
-
-# Merge player datasets
-df_players = pd.concat([df_players_2017, df_rec_fall_24, df_pta_fall, df_adp_fall, df_travel], ignore_index=True)
 
 def create_heatmap(df):
     map_obj = folium.Map(location=[38.893859, -77.0971477], zoom_start=12)
     heatmap_data = df[["Latitude", "Longitude"]].dropna().values.tolist()
-    if heatmap_data: 
+    if heatmap_data:
         HeatMap(heatmap_data).add_to(map_obj)
     return map_obj
 
 def create_pin_map(player_df, field_df):
-    map_obj = folium.Map(location=[38.893858, -77.0971477], zoom_start=12)
+    map_obj = folium.Map(location=[38.95, -77.0369], zoom_start=12)
     
     # Limit player markers to 500
     for _, row in player_df.head(500).iterrows():
@@ -230,18 +237,11 @@ def create_pin_map(player_df, field_df):
     return map_obj
 
 # Sidebar filters
-
-
-st.sidebar.text("")
-st.sidebar.text("")
-st.sidebar.text("")
-
-if st.sidebar.button("Manage Programs", key="nav_manage_ui"):
-    st.session_state.view = "manage"
-
-st.sidebar.markdown("---")
-
 st.sidebar.header("Player Filters")
+
+def get_unique_options(column):
+    """ Get sorted unique options """
+    return sorted(df_players[column].unique())
 
 def get_lowercase_unique_options(column):
     """ Get sorted unique lowercase options """
@@ -251,17 +251,19 @@ def get_numeric_sorted_options(column):
     """ Get sorted unique numeric options """
     return sorted(df_players[column].dropna().astype(int).unique())
 
-df_players["Race"] = df_players["Race"].astype(str).str.lower().str.strip()
-
-df_players["Race List"] = df_players["Race"].apply(lambda x: x.split(",") if pd.notnull(x) else [])
-
 def get_unique_race_options():
-    """ Get unique race options """
+    """ Get unique race options from Race List column """
     unique_races = set()
-    df_players["Race"].dropna().astype(str).str.lower().apply(lambda x: unique_races.update(x.split(", ")))
-    return sorted(unique_races)
 
-selected_programs = st.sidebar.multiselect("Select Program", get_lowercase_unique_options("Program"))
+    # Go through each race_list_str, convert to list, add to set
+    df_players["Race List"].dropna().apply(
+        lambda race_list_str: unique_races.update(ast.literal_eval(race_list_str))
+    )
+
+    return sorted(race.strip() for race in unique_races)  # Remove extra spaces just in case
+
+
+selected_programs = st.sidebar.multiselect("Select Program", get_unique_options("Program"))
 selected_ages = st.sidebar.multiselect("Select Age", get_numeric_sorted_options("Age"))
 selected_gender = st.sidebar.selectbox("Select Gender", [""] + get_lowercase_unique_options("Gender"))
 selected_grade = st.sidebar.multiselect("Select Grade", get_lowercase_unique_options("Grade"))
@@ -297,7 +299,7 @@ if selected_grade:
 
 if any([selected_programs, selected_ages, selected_gender, selected_grade, selected_race, selected_school]):
     if selected_programs:
-        filtered_players = filtered_players[filtered_players["Program"].str.lower().isin(selected_programs)]
+        filtered_players = filtered_players[filtered_players["Program"].isin(selected_programs)]
     if selected_ages:
         filtered_players = filtered_players[filtered_players["Age"].isin(selected_ages)]
     if selected_gender:
@@ -305,7 +307,13 @@ if any([selected_programs, selected_ages, selected_gender, selected_grade, selec
     if selected_grade:
         filtered_players = filtered_players[filtered_players["Grade"].isin(selected_grade)]
     if selected_race:
-        filtered_players = filtered_players[filtered_players["Race List"].apply(lambda races: any(race in races for race in selected_race))]
+        filtered_players = filtered_players[
+            filtered_players["Race List"].apply(
+                lambda race_list_str: any(
+                    race in ast.literal_eval(race_list_str) for race in selected_race
+                ) if pd.notnull(race_list_str) else False
+            )
+        ]
     if selected_school:
         filtered_players = filtered_players[filtered_players["School"].str.lower().isin(selected_school)]
 else:
@@ -332,152 +340,24 @@ if any([selected_capacity, selected_surface, selected_size, selected_game_size, 
 else:
     filtered_fields = pd.DataFrame(columns=df_fields.columns)
 
-if st.session_state.view == "manage":
-    st.header("Manage Programs")
-    st.markdown("Here you can view, add, or delete programs.")
-
-    st.markdown("---")
-
-    st.markdown("### Current Programs:")
-    if st.session_state.manage_program_names:
-        for p in st.session_state.manage_program_names:
-            st.write(f"• {p}")
-    else:
-        st.write("No programs currently added.")
-
-    st.markdown("---")
-
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("Add Program"):
-            st.session_state.is_adding_program = True
-            st.session_state.is_deleting_program = False
-    
-    with col2:
-        if st.button("Delete Program"):
-            if st.session_state.manage_program_names:
-                st.session_state.is_deleting_program = True
-                st.session_state.is_adding_program = False
-            else:
-                st.warning("No programs available to delete.")
-    with col3:
-        if st.button("Back to Home", key="visible_home"):
-            st.session_state.view = "home"
-    st.markdown("---")
-
-if st.session_state.is_adding_program:
-    st.header("Add New Program")
-    st.markdown("Fill in the form below to add a new program to the system.")
-    st.markdown("---")
-
-    name = st.text_input("Program Name")
-    uploaded_file = st.file_uploader("Upload CSV file", type=["csv"])
-    if st.button("Submit Program"):
-        if not name:
-            st.error("Please enter a program name.")
-        elif not uploaded_file:
-            st.error("Please upload a CSV file.")
-        else:
-        # Read and process the uploaded file
-            try:
-                df_uploaded = pd.read_csv(uploaded_file)
-                df_uploaded["Program"] = name
-
-                st.session_state.added_programs.append({"name": name, "data": df_uploaded})
-                st.session_state.manage_program_names.append(name)
-
-                st.success(f"Successfully added program: **{name}**.")
-                st.session_state.is_adding_program = False
-            except Exception as e:
-                st.error(f"Error reading file: {e}")
-
-if st.session_state.is_deleting_program:
-    st.header("Delete a Program")
-    st.markdown("Select a program to remove from the list.")
-
-    program_to_delete = st.selectbox("Choose a program", st.session_state.manage_program_names)
-
-    if st.button("Confirm Delete"):
-        if program_to_delete in st.session_state.manage_program_names:
-            st.session_state.manage_program_names.remove(program_to_delete)
-
-        st.session_state.added_programs = [
-            prog for prog in st.session_state.added_programs
-            if prog["name"] != program_to_delete
-        ]
-
-        st.session_state.deletion_confirmed = True  # 💥 New flag
-        st.success(f"Deleted program: {program_to_delete}")
-        st.session_state.is_deleting_program = False
-
 # Display updated maps
-if st.session_state.view == "home":
+st.header("Heat Map")
+st_folium(create_heatmap(filtered_players), width=700, height=500)
 
-    # Title and header
-    st.title("Welcome to DC Soccer Club Maps")
+st.header("Pin Map")
+st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
 
-    st.header(f"Hello, {st.experimental_user.name}!")
-    if st.experimental_user.picture:
-        st.image(st.experimental_user.picture)
 
-    if st.button("Logout"):
-        st.logout()
-
-    st.header("Heat Map")
-    st_folium(create_heatmap(filtered_players), width=700, height=500)
-
-    st.header("Pin Map")
-    st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
 
 #DISTANCING
-    st.header("Optimal Distance in Streamlit")
-    #selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
-    if st.button("Submit"):
-        print(filtered_players)
-        best_field, avg_dist = find_optimal_field_for_data(filtered_players, filtered_fields)
-        if best_field is not None:
-            st.write(f"The optimal field is {best_field}, with average distance {avg_dist:.2f} miles.")
-        else:
-            st.write("No best field found (no players or no fields).")
+st.header("Optimal Distance in Streamlit")
+#selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
+if st.button("Submit"):
+    print(filtered_players)
+    best_field, avg_dist = find_optimal_field_for_data(filtered_players, filtered_fields)
+    if best_field is not None:
+        st.write(f"The optimal field is {best_field}, with average distance {avg_dist:.2f} miles.")
     else:
-        st.write("Please select an option and click Submit.")
-
-
-
-# def calculate_distances(players_df, fields_df):
-#     distances = pd.DataFrame(index=players_df.index, columns=fields_df['Name'])
-
-#     for player_idx, player in players_df.iterrows():
-#         player_coords = (player['latitude'], player['longitude'])
-
-#         for field_idx, field in fields_df.iterrows():
-#             field_coords = (field['latitude'], field['longitude'])
-#             distances.at[player_idx, field['Name']] = distance(player_coords, field_coords).miles
-            
-#     return distances
-
-# def find_optimal_field(distance_df):
-#     avg_distances = distance_df.mean()
-#     return avg_distances, avg_distances.idxmin()
-
-# fields_df = pd.read_csv('distance_mapping/new_cleaned_fields_data.csv')
-
-# fields_df['latitude'] = pd.to_numeric(fields_df['latitude'])
-# fields_df['longitude'] = pd.to_numeric(fields_df['longitude'])
-
-# optimal_fields = {}
-
-# program_files = ['distance_mapping/new_cleaned_2017_Players_Data.csv', 'distance_mapping/new_cleaned_PTA_fall.csv', 'distance_mapping/new_cleaned_rec_fall24.csv', 'distance_mapping/new_cleaned_travel_data_base.csv']
-
-# for file in program_files:
-#     program_name = file.split('_')[3]
-#     players_df = pd.read_csv(file)
-
-#     players_df['latitude'] = pd.to_numeric(players_df['latitude'])
-#     players_df['longitude'] = pd.to_numeric(players_df['longitude'])
-    
-#     distances = calculate_distances(players_df, fields_df)
-#     avg_distances, optimal_field = find_optimal_field(distances)
-#     optimal_fields[program_name] = optimal_field
-#     #print optimal field and average distance for each file
-#     print(f'Optimal field for {program_name} is {optimal_field} with an average distance of {avg_distances[optimal_field]} miles')
+        st.write("No best field found (no players or no fields).")
+else:
+    st.write("Please select an option and click Submit.")
