@@ -3,7 +3,6 @@ import pandas as pd
 import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
-from datetime import datetime
 from clean_uploaded_csv import clean_uploaded_csv
 from distance_mapping import find_optimal_field_for_data
 from supabase import create_client, Client
@@ -14,82 +13,40 @@ supabase_key = st.secrets["supabase"]["api_key"]
 
 supabase: Client = create_client(supabase_url, supabase_key)
 
+if "view" not in st.session_state:
+    st.session_state.view = "home"
+
+if "manage_mode" not in st.session_state:
+    st.session_state.manage_mode = None
+
+
+
+if "user" not in st.session_state:
+    st.session_state.user = None
+
+if st.session_state.user is None:
+    st.title("Sign In")
+
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        try:
+            response = supabase.auth.sign_in_with_password({"email": email, "password": password})
+            if response.user:
+                st.session_state.user = response.user
+                st.success(f"Logged in as: {response.user.email}")
+                st.rerun()
+            else:
+                st.error("Login failed. Check your credentials.")
+        except Exception as e:
+            st.error(f"Login error: {e}")
+
+    st.stop()
+
+
 # Title and header
 st.title("Welcome to DC Soccer Club Maps")
-
-with st.expander("Manage Data"):
-    manage_option = st.radio("What would you like to do?", ["Add", "Delete"])
-
-    # Clear confirmation if switching modes
-    # Initialize session state if not present
-    if "confirm_delete" not in st.session_state:
-        st.session_state.confirm_delete = False
-    if "selected_program" not in st.session_state:
-        st.session_state.selected_program = None
-
-    if manage_option == "Add":
-        # Reset delete state when switching to Add
-        st.session_state.confirm_delete = False
-        st.session_state.selected_program = None
-
-    if manage_option == "Delete":
-        st.markdown("### Delete Players by Program")
-
-        # Fetch unique programs from Supabase
-        all_players = []
-        start = 0
-        while True:
-            response = supabase.table("Players").select("Program").range(start, start + 999).execute()
-            if not response.data:
-                break
-            all_players.extend(response.data)
-            start += 1000
-
-        program_df = pd.DataFrame(all_players)
-        unique_programs = sorted(program_df["Program"].dropna().unique())
-
-        if not st.session_state.confirm_delete:
-            st.session_state.selected_program = st.selectbox("Select a program to delete:", unique_programs)
-            if st.button("Delete Selected Program"):
-                st.session_state.confirm_delete = True
-
-        elif st.session_state.confirm_delete:
-            st.warning("Are you sure you want to delete all players in this program? This action cannot be undone.")
-            col1, col2 = st.columns([1, 1])
-            with col1:
-                if st.button("Yes, Delete"):
-                    supabase.table("Players").delete().ilike("Program", st.session_state.selected_program).execute()
-                    st.success(f"Deleted all players in: {st.session_state.selected_program}")
-                    st.session_state.confirm_delete = False
-                    st.session_state.selected_program = None
-                    st.rerun()
-            with col2:
-                if st.button("Cancel"):
-                    st.session_state.confirm_delete = False
-                    st.session_state.selected_program = None
-                    st.rerun()
-
-
-
-                
-
-
-    elif manage_option == "Add":
-        st.markdown("### Add Players via CSV")
-        new_program = st.text_input("Enter the program name for this new data")
-        uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
-
-        if uploaded_file and new_program:
-            if st.button("Add to Supabase"):
-                try:
-                    df_new = pd.read_csv(uploaded_file)
-                    cleaned_df = clean_uploaded_csv(df_new, new_program)
-                    data = cleaned_df.to_dict(orient="records")
-                    for row in data:
-                        supabase.table("Players").insert(row).execute()
-                    st.success("Data successfully cleaned and added to Supabase!")
-                except Exception as e:
-                    st.error(f"Add failed: {str(e)}")
 
 
 
@@ -185,6 +142,67 @@ st.markdown(
 
 # Add Logo to Sidebar
 st.sidebar.image("./DC_Soccer_Logo.png", use_container_width=True)
+
+if st.sidebar.button("Manage Programs"):
+    st.session_state.view = "manage"
+
+# Manage Programs View
+if st.session_state.view == "manage":
+    st.title("Manage Programs")
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("Add Program"):
+            st.session_state.manage_mode = "add"
+    with col2:
+        if st.button("Delete Program"):
+            st.session_state.manage_mode = "delete"
+    with col3:
+        if st.button("Return Home"):
+            st.session_state.view = "home"
+            st.session_state.manage_mode = None
+
+    if "manage_mode" not in st.session_state:
+        st.session_state.manage_mode = None
+
+    if st.session_state.manage_mode == "add":
+        st.subheader("Add Players via CSV")
+        new_program = st.text_input("Enter the program name for this new data")
+        uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
+        if uploaded_file and new_program:
+            if st.button("Add to Supabase"):
+                try:
+                    df_new = pd.read_csv(uploaded_file)
+                    cleaned_df = clean_uploaded_csv(df_new, new_program)
+                    data = cleaned_df.to_dict(orient="records")
+                    for row in data:
+                        supabase.table("Players").insert(row).execute()
+                    st.success("Data successfully cleaned and added to Supabase!")
+                except Exception as e:
+                    st.error(f"Add failed: {str(e)}")
+
+    elif st.session_state.manage_mode == "delete":
+        st.subheader("Delete Players by Program")
+        all_players = []
+        start = 0
+        while True:
+            response = supabase.table("Players").select("Program").range(start, start + 999).execute()
+            if not response.data:
+                break
+            all_players.extend(response.data)
+            start += 1000
+
+        program_df = pd.DataFrame(all_players)
+        unique_programs = sorted(program_df["Program"].dropna().unique())
+
+        selected_program = st.selectbox("Select a program to delete:", unique_programs)
+        if st.button("Confirm Delete"):
+            try:
+                supabase.table("Players").delete().ilike("Program", selected_program).execute()
+                st.success(f"Deleted all players in: {selected_program}")
+                st.rerun()
+            except Exception as e:
+                st.error(f"Delete failed: {str(e)}")
 
 def fetch_data(table_name):
     all_data = []
@@ -341,23 +359,25 @@ else:
     filtered_fields = pd.DataFrame(columns=df_fields.columns)
 
 # Display updated maps
-st.header("Heat Map")
-st_folium(create_heatmap(filtered_players), width=700, height=500)
+if st.session_state.view == "home":
+    st.header("Heat Map")
+    st_folium(create_heatmap(filtered_players), width=700, height=500)
 
-st.header("Pin Map")
-st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
+    st.header("Pin Map")
+    st_folium(create_pin_map(filtered_players, filtered_fields), width=700, height=500)
 
 
 
-#DISTANCING
-st.header("Optimal Distance in Streamlit")
-#selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
-if st.button("Submit"):
-    print(filtered_players)
-    best_field, avg_dist = find_optimal_field_for_data(filtered_players, filtered_fields)
-    if best_field is not None:
-        st.write(f"The optimal field is {best_field}, with average distance {avg_dist:.2f} miles.")
+
+    #DISTANCING
+    st.header("Optimal Distance in Streamlit")
+    #selected_option = st.selectbox("Choose a Program",df_players["Program"].unique())
+    if st.button("Submit"):
+        print(filtered_players)
+        best_field, avg_dist = find_optimal_field_for_data(filtered_players, filtered_fields)
+        if best_field is not None:
+            st.write(f"The optimal field is {best_field}, with average distance {avg_dist:.2f} miles.")
+        else:
+            st.write("No best field found (no players or no fields).")
     else:
-        st.write("No best field found (no players or no fields).")
-else:
-    st.write("Please select an option and click Submit.")
+        st.write("Please select an option and click Submit.")
