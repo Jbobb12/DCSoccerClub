@@ -416,12 +416,6 @@ if st.session_state.view == "home":
     # Title and header
     st.title("Welcome to DC Soccer Club Maps")
 
-    st.header(f"Hello, {st.experimental_user.name}!")
-    if st.experimental_user.picture:
-        st.image(st.experimental_user.picture)
-
-    if st.button("Logout"):
-        st.logout()
 
     st.header("Heat Map")
     st_folium(create_heatmap(filtered_players), width=700, height=500)
