@@ -23,7 +23,7 @@ if "manage_mode" not in st.session_state:
 if not st.experimental_user.is_logged_in:
     st.title("Sign In to DC Soccer Club Maps")
 
-    if st.button("Login with Google"):
+    if st.button("Sign in with Google"):
         st.login("google")
     st.stop()
 elif st.experimental_user.email not in ALLOWED_EMAILS:
