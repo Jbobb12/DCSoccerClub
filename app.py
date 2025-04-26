@@ -5,6 +5,7 @@ from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 from clean_uploaded_csv import clean_uploaded_csv
 from distance_mapping import find_optimal_field_for_data
+from emails import ALLOWED_EMAILS
 from supabase import create_client, Client
 from emails import ALLOWED_EMAILS
 import ast
