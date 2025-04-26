@@ -281,12 +281,19 @@ def get_unique_race_options():
     return sorted(race.strip() for race in unique_races)  # Remove extra spaces just in case
 
 
+df_players["birth_date"] = df_players["Birth Date"]
+def get_numeric_sorted_birth_years(column):
+    """ Get sorted unique birth years """
+    return sorted(df_players[column].dropna().apply(lambda x: int(str(x).rsplit("/", 1)[-1].strip())).unique())
+
+
 selected_programs = st.sidebar.multiselect("Select Program", get_unique_options("Program"))
 selected_ages = st.sidebar.multiselect("Select Age", get_numeric_sorted_options("Age"))
 selected_gender = st.sidebar.selectbox("Select Gender", [""] + get_lowercase_unique_options("Gender"))
 selected_grade = st.sidebar.multiselect("Select Grade", get_lowercase_unique_options("Grade"))
 selected_race = st.sidebar.multiselect("Select Race", get_unique_race_options())
 selected_school = st.sidebar.multiselect("Select School", get_lowercase_unique_options("School"))
+selected_birth_year = st.sidebar.multiselect("Select Birth Year", get_numeric_sorted_birth_years("Birth Date"))
 
 # Field Filters
 st.sidebar.header("Field Filters")
@@ -315,7 +322,7 @@ filtered_players = df_players.copy()
 if selected_grade:
     filtered_players = filtered_players[filtered_players["Grade"].isin([g.lower().strip() for g in selected_grade])]
 
-if any([selected_programs, selected_ages, selected_gender, selected_grade, selected_race, selected_school]):
+if any([selected_programs, selected_ages, selected_gender, selected_grade, selected_race, selected_school, selected_birth_year]):
     if selected_programs:
         filtered_players = filtered_players[filtered_players["Program"].isin(selected_programs)]
     if selected_ages:
@@ -334,6 +341,8 @@ if any([selected_programs, selected_ages, selected_gender, selected_grade, selec
         ]
     if selected_school:
         filtered_players = filtered_players[filtered_players["School"].str.lower().isin(selected_school)]
+    if selected_birth_year:
+        filtered_players = filtered_players[filtered_players["Birth Date"].dropna().apply(lambda x: int(str(x).rsplit("/", 1)[-1].strip())).isin(selected_birth_year)]
 else:
     filtered_players = pd.DataFrame(columns=df_players.columns)
 
