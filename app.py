@@ -281,7 +281,7 @@ def get_unique_race_options():
     return sorted(race.strip() for race in unique_races)  # Remove extra spaces just in case
 
 
-df_players["birth_date"] = df_players["Birth Date"]
+df_players=df_players.rename(columns={"birth_date": "Birth Date"})
 def get_numeric_sorted_birth_years(column):
     """ Get sorted unique birth years """
     return sorted(df_players[column].dropna().apply(lambda x: int(str(x).rsplit("/", 1)[-1].strip())).unique())
