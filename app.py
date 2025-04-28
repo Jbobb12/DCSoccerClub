@@ -7,7 +7,6 @@ from clean_uploaded_csv import clean_uploaded_csv
 from distance_mapping import find_optimal_field_for_data
 from emails import ALLOWED_EMAILS
 from supabase import create_client, Client
-from emails import ALLOWED_EMAILS
 import ast
 
 supabase_url = st.secrets["supabase"]["url"]
@@ -40,7 +39,7 @@ else:
     st.title("Welcome to DC Soccer Club Maps")
 
     st.header(f"Hello, {st.experimental_user.name}!")
-    st.image(st.experimental_user.picture)
+    # st.image(st.experimental_user.picture)
 
     if st.button("Logout"):
         st.logout()
