@@ -7,6 +7,7 @@ from clean_uploaded_csv import clean_uploaded_csv
 from distance_mapping import find_optimal_field_for_data
 from supabase import create_client, Client
 import ast
+import datetime as dt
 
 supabase_url = st.secrets["supabase"]["url"]
 supabase_key = st.secrets["supabase"]["api_key"]
@@ -284,7 +285,7 @@ def get_unique_race_options():
 df_players=df_players.rename(columns={"birth_date": "Birth Date"})
 def get_numeric_sorted_birth_years(column):
     """ Get sorted unique birth years """
-    return sorted(df_players[column].dropna().apply(lambda x: int(str(x).rsplit("/", 1)[-1].strip())).unique())
+    return sorted(pd.to_datetime(df_players[column], errors='coerce').dropna().dt.year.unique())
 
 
 selected_programs = st.sidebar.multiselect("Select Program", get_unique_options("Program"))
@@ -342,7 +343,7 @@ if any([selected_programs, selected_ages, selected_gender, selected_grade, selec
     if selected_school:
         filtered_players = filtered_players[filtered_players["School"].str.lower().isin(selected_school)]
     if selected_birth_year:
-        filtered_players = filtered_players[filtered_players["Birth Date"].dropna().apply(lambda x: int(str(x).rsplit("/", 1)[-1].strip())).isin(selected_birth_year)]
+        filtered_players = filtered_players[pd.to_datetime(filtered_players["Birth Date"], errors='coerce').dt.year.isin(selected_birth_year)]
 else:
     filtered_players = pd.DataFrame(columns=df_players.columns)
 
